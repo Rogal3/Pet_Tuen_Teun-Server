@@ -10,7 +10,7 @@ public class exController {
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String loadHome(Model m) {
 		m.addAttribute("name","home!!!!");
-		System.out.println("asdasdf!!");
+		
 		return "home";
 	}
 }
