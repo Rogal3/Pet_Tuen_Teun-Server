@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class exController {
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String loadHome(Model m) {
-		m.addAttribute("name","home!!!!");
+		m.addAttribute("개같은 박성일!");
 		
 		return "home";
 	}
