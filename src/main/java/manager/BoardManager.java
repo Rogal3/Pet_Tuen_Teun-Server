@@ -71,6 +71,14 @@ public class BoardManager {
 		}
 		return emp;
 	}
+	public ArrayList<String> searchTypes(){
+		ArrayList<String> emp=new ArrayList<String>();
+		Iterator<String> iter=this.boardTypeList.keySet().iterator();
+		while(iter.hasNext()) {
+			emp.add(iter.next());
+		}
+		return emp;
+	}
 	public byte modifyBoard(String boardID,Board board) {
 		if(searchBoard(boardID)==null)return 0;
 		
