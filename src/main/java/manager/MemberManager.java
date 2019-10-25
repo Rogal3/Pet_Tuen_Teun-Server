@@ -52,7 +52,7 @@ public class MemberManager {
 		while(keys.hasNext()) {
 			String key=keys.next();
 			Member mem=members.get(key);
-			if(mem.getAddress().contains(name)) {
+			if(mem.getName().equals(name)) {
 				member.add(mem);
 			}
 		}
