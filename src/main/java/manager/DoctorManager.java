@@ -40,6 +40,17 @@ public class DoctorManager {
 		
 		return doctors;
 	}
+	public byte modifyDoctor(String hospitalID,Doctor doctor) {
+		if(searchDoctor(hospitalID, doctor.getName())==null)return 0;
+		
+		this.doctors.get(hospitalID).put(doctor.getName(),doctor);
+		return 1;
+	}
+	public byte modifyDoctorTime(String hospitalID,String doctorName,String time) {
+		if(searchDoctor(hospitalID, doctorName)==null)return 0;
+		return this.doctors.get(hospitalID).get(doctorName).modifyWorkingTime(time);
+		
+	}
 	public byte deleteDoctor(String hospitalID,String name) {
 		if(searchDoctor(hospitalID, name)==null)return 0;
 		this.doctors.get(hospitalID).remove(name);
