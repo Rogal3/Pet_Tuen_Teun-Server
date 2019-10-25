@@ -1,6 +1,8 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.StringTokenizer;
 
 import manager.AnimalManager;
 import manager.MemberManager;
@@ -78,7 +80,44 @@ public class MemberService {
 	public byte modifyAnimal(String id,Animal animal) {
 		return this.animalManager.modifyAnimal(id, animal);
 	}
-	public byte calcuDday(String id, String name) {
-		return 0;
+	public int calcuDday(String id, String name) {
+		String birth=searchAnimal(id,name).getBirth();
+		StringTokenizer tokens=new StringTokenizer(birth,"/");
+		String[] list=new String[tokens.countTokens()];
+		int i=0;
+		while(tokens.hasMoreElements()) {
+			list[i++]=tokens.nextToken();
+		}
+		
+		Calendar cal=Calendar.getInstance();
+		Calendar dayCal=Calendar.getInstance();
+		
+		int year=cal.get(cal.YEAR);
+		int month=cal.get(cal.MONTH)+1;
+		int birthMonth=0;
+		int birthDate=0;
+		
+		try {
+			birthMonth=Integer.parseInt(list[1]);
+			birthDate=Integer.parseInt(list[2]);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(birthMonth<month) {
+			year++;
+		}
+		
+		dayCal.set(year,birthMonth,birthDate);
+		
+		long birthday=dayCal.getTimeInMillis()/(24*60*60*1000);
+		long curday=cal.getTimeInMillis()/(24*60*60*1000);
+		return Math.abs((int)(birthday-curday));
+	}
+	public byte deleteAnimal(String id,String name) {
+		return this.deleteAnimal(id, name);
+	}
+	public byte addAnimal(String id, String name,String birth,String adoptDay,String species,String age) {
+		return this.animalManager.addAnimal(id, new Animal(name, species, Integer.parseInt(age), adoptDay, birth));
 	}
 }
