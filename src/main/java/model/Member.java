@@ -76,4 +76,20 @@ public class Member {
 		this.name=name;
 		return 1;
 	}
+	public String get(String attribute, String data) {
+		switch(attribute) {
+			case "id":
+				return getId();
+			case "password":
+				return getPassword();
+			case "name":
+				return getName();
+			case "address":
+				return getAddress();
+			case "phoneNum":
+				return getPhoneNum();
+			default:
+				return null;
+		}
+	}
 }
