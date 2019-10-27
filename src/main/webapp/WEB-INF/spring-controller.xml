@@ -5,5 +5,5 @@
 <!-- 컨트롤러 나중에 -->
 	
 	<bean class="controller.exController"></bean>	
-	<bean class="controller.MemberController"></bean>	
+	<bean class="controller.MemberController"></bean>
 </beans>
