@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class exController {
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String loadHome(Model m) {
-		m.addAttribute("name","for commit test");
-		
+		m.addAttribute("name","here?");
 		
 		return "home";
 	}

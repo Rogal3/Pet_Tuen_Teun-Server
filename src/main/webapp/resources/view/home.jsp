@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1>Hello ${name } funking</h1>
+${result}
 </body>
 </html>
