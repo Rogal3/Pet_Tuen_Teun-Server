@@ -4,6 +4,6 @@
 
 <!-- 컨트롤러 나중에 -->
 	
-	<bean class="view.exController"></bean>	
-	
+	<bean class="controller.exController"></bean>	
+	<bean class="controller.MemberController"></bean>	
 </beans>
