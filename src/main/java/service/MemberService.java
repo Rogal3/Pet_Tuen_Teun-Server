@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
+import org.springframework.stereotype.Service;
+
 import manager.AnimalManager;
 import manager.MemberManager;
 import model.Animal;
 import model.Member;
 
+@Service
 public class MemberService {
 
 	private MemberManager memberManager;
