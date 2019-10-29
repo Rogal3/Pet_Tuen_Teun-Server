@@ -1,6 +1,7 @@
 package model;
 
 public class Rating {
+	private String id;
 	private String writer;
 	private String hospital;
 	private int scale;
@@ -17,7 +18,12 @@ public class Rating {
 		this.scale = scale;
 		this.content = content;
 	}
-
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getWriter() {
 		return writer;
 	}
