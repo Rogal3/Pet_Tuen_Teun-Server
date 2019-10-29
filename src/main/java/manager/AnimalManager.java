@@ -10,6 +10,7 @@ public class AnimalManager {
 	private HashMap<String,HashMap<String,Animal>> animals;
 	
 	public AnimalManager() {
+		super();
 		this.animals=new HashMap<String,HashMap<String,Animal>>();
 	}
 	public AnimalManager(HashMap<String, HashMap<String, Animal>> animals) {
