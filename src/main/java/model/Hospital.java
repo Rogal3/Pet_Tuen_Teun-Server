@@ -41,7 +41,7 @@ public class Hospital {
 		this.address=address;
 		return 1;
 	}
-	public byte phoneNum(String phoneNum) {
+	public byte modifyPhoneNum(String phoneNum) {
 		this.phoneNum=phoneNum;
 		return 1;
 	}
