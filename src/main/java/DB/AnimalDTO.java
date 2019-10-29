@@ -12,6 +12,14 @@ public class AnimalDTO implements Serializable {
 	public AnimalDTO() {
 		super();
 	}
+	public AnimalDTO(String name, String species, int age, String adopt, String birth) {
+		super();
+		this.name = name;
+		this.species = species;
+		this.age = age;
+		this.adopt = adopt;
+		this.birth = birth;
+	}
 	public String getName() {
 		return name;
 	}
