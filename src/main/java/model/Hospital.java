@@ -4,16 +4,19 @@ public class Hospital {
 	private String name;
 	private String address;
 	private String phoneNum;
-	
+	private String openTime;
+	private String closeTime;
 	
 	public Hospital() {
 		super();
 	}
-	public Hospital(String name, String address, String phoneNum) {
+	public Hospital(String name, String address, String phoneNum, String openTime, String closeTime) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.phoneNum = phoneNum;
+		this.openTime = openTime;
+		this.closeTime = closeTime;
 	}
 	public String getName() {
 		return name;
@@ -45,4 +48,17 @@ public class Hospital {
 		this.phoneNum=phoneNum;
 		return 1;
 	}
+	public String getOpenTime() {
+		return openTime;
+	}
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+	public String getCloseTime() {
+		return closeTime;
+	}
+	public void setCloseTime(String closeTime) {
+		this.closeTime = closeTime;
+	}
+	
 }
