@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import manager.DoctorManager;
 import manager.HospitalManager;
 import manager.ReservationManager;
@@ -51,6 +53,9 @@ public class HospitalService {
 	}
 	public byte deleteHospital(String hospitalName) {
 		return this.hospitalManager.deleteHospital(hospitalName);
+	}
+	public ArrayList<Hospital> searchHospital(String curTime){
+		return this.hospitalManager.searchHospitalByTime(curTime);
 	}
 	public byte modifyDoctorTime(String hospitalID,String name,String time) {
 		return this.doctorManager.modifyDoctorTime(hospitalID, name, time);
