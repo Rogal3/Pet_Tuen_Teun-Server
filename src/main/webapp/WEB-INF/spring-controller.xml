@@ -6,7 +6,8 @@
 	
 	<bean class="controller.exController"></bean>	
 	<bean class="controller.MemberController"></bean>
-	
+	<bean class="controller.PetController"></bean>
+	<bean class="controller.HospitalController"></bean>
 	
 	<!-- 서비스 등록 일단 지금 여따가 해둠 -->
 	

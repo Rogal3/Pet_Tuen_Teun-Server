@@ -1,26 +1,23 @@
 package controller;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.SecurityContextProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import service.MemberService;
+import service.HospitalService;
 
 @Controller
-public class MemberController {
+public class HospitalController {
 	@Autowired
-	private MemberService memberService;
+	private HospitalService hospital;
 	
-	@RequestMapping(value="/login.do")
+	@RequestMapping(value="/listView.do")
 	@ResponseBody
 	public JSONObject loadHome(HttpSession session,@RequestParam("id")String id,@RequestParam("password")String pwd) {
 		System.out.println(id+"/"+pwd);
@@ -39,7 +36,7 @@ public class MemberController {
 			//String sessionId=(String)context.getAttribute(session.getId());
 			session.setAttribute("id", id);
 		}
-		System.out.println(memberService.searchByID(id).getName());
+		/*System.out.println(memberService.searchByID(id).getName());
 		if(memberService.login(id, pwd)==1) {
 			if(memberService.searchByID(id).getName().contains("병원")) {
 				System.out.println("병원인디");
@@ -52,11 +49,9 @@ public class MemberController {
 		}else {
 			attr.put("msg", "fail");
 		}
-		
+		*/
 		
  
 		return attr;
 	}
-	
-	
 }
