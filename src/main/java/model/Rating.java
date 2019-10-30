@@ -11,7 +11,7 @@ public class Rating {
 		super();
 	}
 
-	public Rating(String writer, String hospital, int scale, String content) {
+	public Rating(String id, String writer, String hospital, int scale, String content) {
 		super();
 		this.writer = writer;
 		this.hospital = hospital;
