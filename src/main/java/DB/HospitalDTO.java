@@ -1,16 +1,18 @@
-package model;
+package DB;
 
-public class Hospital {
+import java.io.Serializable;
+
+public class HospitalDTO implements Serializable {
 	private String name;
 	private String address;
 	private String phoneNum;
 	private String openTime;
 	private String closeTime;
 	
-	public Hospital() {
+	public HospitalDTO() {
 		super();
 	}
-	public Hospital(String name, String address, String phoneNum, String openTime, String closeTime) {
+	public HospitalDTO(String name, String address, String phoneNum, String openTime, String closeTime) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -36,18 +38,6 @@ public class Hospital {
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	public byte modifyName(String name) {
-		this.name=name;
-		return 1;
-	}
-	public byte modifyAddress(String address) {
-		this.address=address;
-		return 1;
-	}
-	public byte modifyPhoneNum(String phoneNum) {
-		this.phoneNum=phoneNum;
-		return 1;
-	}
 	public String getOpenTime() {
 		return openTime;
 	}
@@ -60,5 +50,9 @@ public class Hospital {
 	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
-	
+	@Override
+	public String toString() {
+		return "HospitalDTO [name=" + name + ", address=" + address + ", phoneNum=" + phoneNum + ", openTime="
+				+ openTime + ", closeTime=" + closeTime + "]";
+	}
 }

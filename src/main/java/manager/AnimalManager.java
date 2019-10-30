@@ -13,6 +13,7 @@ public class AnimalManager {
 	private HashMap<String,HashMap<String,Animal>> animals;
 	
 	public AnimalManager() {
+		super();
 		this.animals=new HashMap<String,HashMap<String,Animal>>();
 		
 		this.animals.put("aaa", new HashMap<String,Animal>());

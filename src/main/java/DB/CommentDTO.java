@@ -1,24 +1,25 @@
-package model;
+package DB;
 
-public class Comment {
+import java.io.Serializable;
+
+public class CommentDTO implements Serializable {
 	private String writer;
 	private String content;
 	private String writeTime;
-	
-	public Comment() {
+	public CommentDTO() {
 		super();
 	}
-	public Comment(String writer, String content, String writeTime) {
+	public CommentDTO(String writer, String content, String writeTime) {
 		super();
 		this.writer = writer;
 		this.content = content;
 		this.writeTime = writeTime;
 	}
-	public String getWrite() {
+	public String getWriter() {
 		return writer;
 	}
-	public void setWrite(String write) {
-		this.writer = write;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public String getContent() {
 		return content;
@@ -32,9 +33,8 @@ public class Comment {
 	public void setWriteTime(String writeTime) {
 		this.writeTime = writeTime;
 	}
-	public byte modifyContent(String content) {
-		this.content=content;
-		return 1;
+	@Override
+	public String toString() {
+		return "CommentDTO [writer=" + writer + ", content=" + content + ", writeTime=" + writeTime + "]";
 	}
-	
 }

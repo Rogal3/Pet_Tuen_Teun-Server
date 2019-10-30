@@ -1,30 +1,31 @@
-package model;
+package DB;
 
-public class Board {
-	private String boardID;
+import java.io.Serializable;
+
+public class PostDTO implements Serializable {
+	private String id;
 	private String type;
 	private String title;
 	private String writer;
 	private String content;
 	private String wirteTime;
-	
-	public Board() {
+	public PostDTO() {
 		super();
 	}
-	public Board(String boardID, String type, String title, String writer, String content, String wirteTime) {
+	public PostDTO(String id, String type, String title, String writer, String content, String wirteTime) {
 		super();
-		this.boardID = boardID;
+		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
 		this.wirteTime = wirteTime;
 	}
-	public String getBoardID() {
-		return boardID;
+	public String getId() {
+		return id;
 	}
-	public void setBoardID(String boardID) {
-		this.boardID = boardID;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getType() {
 		return type;
@@ -56,20 +57,10 @@ public class Board {
 	public void setWirteTime(String wirteTime) {
 		this.wirteTime = wirteTime;
 	}
-	public byte modifyType(String type) {
-		this.type=type;
-		return 1;
+	@Override
+	public String toString() {
+		return "PostDTO [id=" + id + ", type=" + type + ", title=" + title + ", writer=" + writer + ", content="
+				+ content + ", wirteTime=" + wirteTime + "]";
 	}
-	public byte modifyTitle(String title) {
-		this.title=title;
-		return 1;
-	}
-	public byte modifyContent(String content) {
-		this.content=content;
-		return 1;
-	}
-	public byte modifyWriteTime(String time) {
-		this.wirteTime=time;
-		return 1;
-	}
+
 }
