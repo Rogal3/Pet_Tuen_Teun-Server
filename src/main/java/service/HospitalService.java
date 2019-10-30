@@ -2,6 +2,8 @@ package service;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
 import manager.DoctorManager;
 import manager.HospitalManager;
 import manager.RatingManager;
@@ -11,6 +13,7 @@ import model.Hospital;
 import model.Rating;
 import model.Reservation;
 
+@Service
 public class HospitalService {
 	private HospitalManager hospitalManager;
 	private ReservationManager reservationManager;
@@ -64,6 +67,9 @@ public class HospitalService {
 	public byte deleteHospital(String hospitalName) {
 		return this.hospitalManager.deleteHospital(hospitalName);
 	}
+	/*public ArrayList<Reservation> searchReservation(){
+		
+	}*/
 	public ArrayList<Hospital> searchHospital(String curTime){
 		return this.hospitalManager.searchHospitalByTime(curTime);
 	}

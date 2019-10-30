@@ -12,4 +12,5 @@
 	<!-- 서비스 등록 일단 지금 여따가 해둠 -->
 	
 	<bean id="memberService" class="service.MemberService"></bean>
+	<bean id="hospitalService" class="service.HospitalService"></bean>
 </beans>
