@@ -7,6 +7,9 @@ import java.util.Iterator;
 import model.Board;
 
 public class BoardManager {
+	/**
+	 * 인기 f , 최신 n, 내동물 m, 팁 t
+	 */
 	private HashMap<String,Board> boards;
 	private HashMap<String,ArrayList<Board>> boardTypeList;
 	
@@ -14,6 +17,45 @@ public class BoardManager {
 		super();
 		this.boards=new HashMap<String,Board>();
 		this.boardTypeList=new HashMap<String,ArrayList<Board>>();
+		
+		ArrayList<Board> f1=new ArrayList<Board>();
+		f1.add(new Board("f1","favorite","title","aaa","asdf","19.10.30"));
+		f1.add(new Board("f2","favorite","title1","bbb","asdf","19.10.30"));
+		f1.add(new Board("f3","favorite","title2","ccc","asdf","19.10.30"));
+		f1.add(new Board("f4","favorite","title3","ccc","asdf","19.10.30"));
+		f1.add(new Board("f5","favorite","title4","aaa","asdf","19.10.30"));
+		
+		ArrayList<Board> n1=new ArrayList<Board>();
+		f1.add(new Board("n1","new","title","aaa","asdf","19.10.30"));
+		f1.add(new Board("n2","new","title","bbb","asdf","19.10.30"));
+		f1.add(new Board("n3","new","title","ccc","asdf","19.10.30"));
+		f1.add(new Board("n4","new","title","ccc","asdf","19.10.30"));
+		f1.add(new Board("n5","new","title","aaa","asdf","19.10.30"));
+		
+		ArrayList<Board> m1=new ArrayList<Board>();
+		f1.add(new Board("m1","my","title","aaa","asdf","19.10.30"));
+		f1.add(new Board("m2","my","title","bbb","asdf","19.10.30"));
+		f1.add(new Board("m3","my","title","ccc","asdf","19.10.30"));
+		f1.add(new Board("m4","my","title","ccc","asdf","19.10.30"));
+		f1.add(new Board("m5","my","title","aaa","asdf","19.10.30"));
+		
+		ArrayList<Board> t1=new ArrayList<Board>();
+		f1.add(new Board("t1","tip","title","ddd","asdf","19.10.30"));
+		f1.add(new Board("t2","tip","title","ddd","asdf","19.10.30"));
+		f1.add(new Board("t3","tip","title","ddd","asdf","19.10.30"));
+		f1.add(new Board("t4","tip","title","ccc","asdf","19.10.30"));
+		f1.add(new Board("t5","tip","title","aaa","asdf","19.10.30"));
+		
+		for(int i=0;i<5;i++) {
+			this.boards.put(f1.get(i).getBoardID(),f1.get(i));
+			this.boards.put(n1.get(i).getBoardID(),n1.get(i));
+			this.boards.put(m1.get(i).getBoardID(),m1.get(i));
+			this.boards.put(t1.get(i).getBoardID(),t1.get(i));
+		}
+		this.boardTypeList.put("favorite", f1);
+		this.boardTypeList.put("new", n1);
+		this.boardTypeList.put("my", m1);
+		this.boardTypeList.put("tip", t1);
 	}
 	public BoardManager(HashMap<String, Board> boards, HashMap<String, ArrayList<Board>> boardTypeList) {
 		super();

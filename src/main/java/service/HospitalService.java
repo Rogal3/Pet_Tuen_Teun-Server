@@ -45,8 +45,8 @@ public class HospitalService {
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
 		return this.reservationManager.addReservation(hospitalID, memberID, reservation);
 	}
-	public byte deleteReservation(String hospitalID,String memberID) {
-		return this.reservationManager.deleteReservation(hospitalID, memberID);
+	public byte deleteReservation(String hospitalID,String memberID,String hospitalName) {
+		return this.reservationManager.deleteReservation(hospitalID, memberID,hospitalName);
 	}
 	public byte addHospital(Hospital hospital) {
 		return this.hospitalManager.addHospital(hospital);
