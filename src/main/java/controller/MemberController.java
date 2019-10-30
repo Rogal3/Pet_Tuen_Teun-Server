@@ -47,8 +47,10 @@ public class MemberController {
 		if(memberService.login(id, pwd)==1) {
 			if(memberService.searchByID(id).getName().contains("병원")) {
 				System.out.println("병원인디");
+				session.setAttribute("type", "hospital");
 				attr.put("user","hospital");
 			}else {
+				session.setAttribute("type", "user");
 				attr.put("user","user");
 			}
 			
@@ -63,9 +65,11 @@ public class MemberController {
 	
 	@RequestMapping(value="/mainView.do")
 	@ResponseBody
-	public JSONObject loadMain(HttpSession session) {
+	public JSONArray loadMain(HttpSession session) {
 		
 		JSONObject attr=new JSONObject();
+		JSONArray ary=new JSONArray();
+		
 		System.out.println("넘어온 쿠키 id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
@@ -77,22 +81,57 @@ public class MemberController {
 			
 			attr.put("msg","ok");
 			
-			JSONArray ary=new JSONArray();
 			
-			ary.add(attr);
 			
-			//hospitalService.
+			if("hospital".equals(session.getAttribute("type"))) {
+				attr.put("name",memberService.searchByID(id).getName());
+				attr.put("address",memberService.searchByID(id).getAddress());
+				attr.put("openTime",hospitalService.searchHospitalByName(memberService.searchByID(id).getName()).getOpenTime());
+				attr.put("closeTime",hospitalService.searchHospitalByName(memberService.searchByID(id).getName()).getOpenTime());
+				
+				ary.add(attr);
+				
+				//중복이지만 우얄수없음
+				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
+					JSONObject emp=new JSONObject();
+					
+					emp.put("id",hospitalService.searchReservation(id).get(i).getHospitalName());
+					emp.put("type",this.memberService.searchAnimal(hospitalService.searchReservation(id).get(i).getHospitalName()).get(0).getSpecies());
+					emp.put("time",hospitalService.searchReservation(id).get(i).getReservationDate());
+					emp.put("careType",hospitalService.searchReservation(id).get(i).getReservationType());
+					emp.put("name",this.memberService.searchAnimal(hospitalService.searchReservation(id).get(i).getHospitalName()).get(0).getName());
+					
+					ary.add(emp);
+				}
 			
-			attr.put("petName",memberService.searchAnimal(id).get(0).getName());
-			attr.put("adopt",memberService.searchAnimal(id).get(0).getAdopt());
-			attr.put("birth",memberService.searchAnimal(id).get(0).getBirth());
-			attr.put("species",memberService.searchAnimal(id).get(0).getSpecies());
+			}else {
+				attr.put("petName",memberService.searchAnimal(id).get(0).getName());
+				attr.put("adopt",memberService.searchAnimal(id).get(0).getAdopt());
+				attr.put("birth",memberService.searchAnimal(id).get(0).getBirth());
+				attr.put("species",memberService.searchAnimal(id).get(0).getSpecies());
+				
+				ary.add(attr);
+				
+				
+				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
+					JSONObject emp=new JSONObject();
+					
+					emp.put("name",hospitalService.searchReservation(id).get(i).getHospitalName());
+					emp.put("subName",hospitalService.searchReservation(id).get(i).getReservationType());
+					emp.put("contents",hospitalService.searchReservation(id).get(i).getReservationDate());
+					
+					ary.add(emp);
+				}
+			
+			}
+			
+			
 		}else {
 			System.out.println("PetInfo -> 세션getID가 없습니다.");
 			attr.put("msg","off");
 		}
 		
-		return attr;
+		return ary;
 	}
 	
 }

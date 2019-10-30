@@ -22,6 +22,10 @@ public class HospitalService {
 	
 	public HospitalService() {
 		super();
+		this.hospitalManager=new HospitalManager();
+		this.reservationManager=new ReservationManager();
+		this.doctorManager=new DoctorManager();
+		this.ratingManager=new RatingManager();
 	}
 	public HospitalService(HospitalManager hospitalManager, ReservationManager reservationManager,
 			DoctorManager doctorManager, RatingManager ratingManager) {
@@ -67,9 +71,14 @@ public class HospitalService {
 	public byte deleteHospital(String hospitalName) {
 		return this.hospitalManager.deleteHospital(hospitalName);
 	}
-	/*public ArrayList<Reservation> searchReservation(){
+	
+	public ArrayList<Reservation> searchReservation(String memberID){
 		
-	}*/
+		return this.reservationManager.searchReservations(memberID);
+	}
+	public Hospital searchHospitalByName(String hospitalName) {
+		return this.hospitalManager.searchHospital(hospitalName);
+	}
 	public ArrayList<Hospital> searchHospital(String curTime){
 		return this.hospitalManager.searchHospitalByTime(curTime);
 	}
