@@ -164,6 +164,7 @@ public class ReservationManager {
 			this.reservations.put(memberID,new ArrayList<Reservation>());
 		}
 		this.reservations.get(memberID).add(reservation);
+		
 		if(searchReservations(hospitalID)==null) {
 			this.reservations.put(hospitalID,new ArrayList<Reservation>());
 		}
