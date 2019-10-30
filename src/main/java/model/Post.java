@@ -1,30 +1,30 @@
 package model;
 
-public class Board {
-	private String boardID;
+public class Post {
+	private String id;
 	private String type;
 	private String title;
 	private String writer;
 	private String content;
 	private String wirteTime;
 	
-	public Board() {
+	public Post() {
 		super();
 	}
-	public Board(String boardID, String type, String title, String writer, String content, String wirteTime) {
+	public Post(String id, String type, String title, String writer, String content, String wirteTime) {
 		super();
-		this.boardID = boardID;
+		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
 		this.wirteTime = wirteTime;
 	}
-	public String getBoardID() {
-		return boardID;
+	public String getId() {
+		return id;
 	}
-	public void setBoardID(String boardID) {
-		this.boardID = boardID;
+	public void setBoardID(String id) {
+		this.id = id;
 	}
 	public String getType() {
 		return type;
