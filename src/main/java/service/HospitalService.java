@@ -2,25 +2,29 @@ package service;
 
 import manager.DoctorManager;
 import manager.HospitalManager;
+import manager.RatingManager;
 import manager.ReservationManager;
 import model.Doctor;
 import model.Hospital;
+import model.Rating;
 import model.Reservation;
 
 public class HospitalService {
 	private HospitalManager hospitalManager;
 	private ReservationManager reservationManager;
 	private DoctorManager doctorManager;
+	private RatingManager ratingManager;
 	
 	public HospitalService() {
 		super();
 	}
 	public HospitalService(HospitalManager hospitalManager, ReservationManager reservationManager,
-			DoctorManager doctorManager) {
+			DoctorManager doctorManager, RatingManager ratingManager) {
 		super();
 		this.hospitalManager = hospitalManager;
 		this.reservationManager = reservationManager;
 		this.doctorManager = doctorManager;
+		this.ratingManager = ratingManager;
 	}
 	public HospitalManager getHospitalManager() {
 		return hospitalManager;
@@ -39,6 +43,12 @@ public class HospitalService {
 	}
 	public void setDoctorManager(DoctorManager doctorManager) {
 		this.doctorManager = doctorManager;
+	}
+	public RatingManager getRatingManager() {
+		return ratingManager;
+	}
+	public void setRatingManager(RatingManager ratingManager) {
+		this.ratingManager = ratingManager;
 	}
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
 		return this.reservationManager.addReservation(hospitalID, memberID, reservation);
@@ -60,5 +70,8 @@ public class HospitalService {
 	}
 	public byte deleteDoctor(String hospitalID, String name) {
 		return this.doctorManager.deleteDoctor(hospitalID,name);
+	}
+	public byte addRating(String id, String writer, String hospital, int scale, String content) {
+		return this.ratingManager.addRating(new Rating(id, writer, hospital, scale, content));
 	}
 }
