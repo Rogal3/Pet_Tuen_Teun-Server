@@ -21,18 +21,18 @@ public class ReservationManager {
 		reser.add(new Reservation("xx병원", "aaa", "예방접종","19/10/14",(byte)1));
 		
 		ArrayList<Reservation> reser1=new ArrayList<Reservation>();
-		reser.add(new Reservation("xx병원", "bbb", "예방접종","19/09/30",(byte)1));
-		reser.add(new Reservation("xx병원", "bbb", "진단","19/10/10",(byte)1));
-		reser.add(new Reservation("xx병원", "bbb", "진단","19/10/11",(byte)1));
+		reser1.add(new Reservation("xx병원", "bbb", "예방접종","19/09/30",(byte)1));
+		reser1.add(new Reservation("xx병원", "bbb", "진단","19/10/10",(byte)1));
+		reser1.add(new Reservation("xx병원", "bbb", "진단","19/10/11",(byte)1));
 		
 		ArrayList<Reservation> reser2=new ArrayList<Reservation>();
-		reser1.add(new Reservation("xx병원", "ccc", "예방접종","19/09/30",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "진단","19/10/10",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "진단","19/10/11",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "예방접종","19/10/14",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "진단","19/10/15",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "진단","19/10/16",(byte)1));
-		reser1.add(new Reservation("xx병원", "ccc", "예방접종","19/10/17",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "예방접종","19/09/30",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "진단","19/10/10",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "진단","19/10/11",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "예방접종","19/10/14",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "진단","19/10/15",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "진단","19/10/16",(byte)1));
+		reser2.add(new Reservation("xx병원", "ccc", "예방접종","19/10/17",(byte)1));
 		
 		ArrayList<Reservation> reser3=new ArrayList<Reservation>();
 		reser3.add(new Reservation("ccc", "ddd", "예방접종","19/09/30",(byte)1));

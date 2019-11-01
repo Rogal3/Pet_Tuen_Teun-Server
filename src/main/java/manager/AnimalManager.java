@@ -8,7 +8,7 @@ import model.Animal;
 
 public class AnimalManager {
 	/**
-	 * key1=id key2 name
+	 * key1=owner key2 name
 	 */
 	private HashMap<String,HashMap<String,Animal>> animals;
 	
