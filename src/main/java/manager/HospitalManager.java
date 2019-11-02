@@ -16,10 +16,10 @@ public class HospitalManager {
 		super();
 		this.hospitals=new HashMap<String,Hospital>();
 		
-		this.hospitals.put("xxº´¿ø",new Hospital("xxº´¿ø", "¼­¿ï½ÃÁß¶û±¸", "010-1234-1234", "10½Ã30ºĞ", "20½Ã30ºĞ"));
-		this.hospitals.put("yyº´¿ø",new Hospital("yyº´¿ø", "¼­¿ï½Ã±¸·Î±¸", "010-1234-1234", "00½Ã30ºĞ", "20½Ã30ºĞ"));
-		this.hospitals.put("zzº´¿ø",new Hospital("zzº´¿ø", "¼­¿ï½Ã³²´ë¹®±¸", "010-1234-1234", "13½Ã30ºĞ", "23½Ã30ºĞ"));
-		this.hospitals.put("wwº´¿ø",new Hospital("wwº´¿ø", "¼­¿ï½Ãµ¿´ë¹®±¸", "010-1234-1234", "10½Ã30ºĞ", "20½Ã30ºĞ"));
+		this.hospitals.put("xxë³‘ì›",new Hospital("xxë³‘ì›", "ì„œìš¸ì‹œì¤‘ë‘êµ¬", "010-1234-1234", "10ì‹œ30ë¶„", "20ì‹œ30ë¶„"));
+		this.hospitals.put("yyë³‘ì›",new Hospital("yyë³‘ì›", "ì„œìš¸ì‹œêµ¬ë¡œêµ¬", "010-1234-1234", "00ì‹œ30ë¶„", "20ì‹œ30ë¶„"));
+		this.hospitals.put("zzë³‘ì›",new Hospital("zzë³‘ì›", "ì„œìš¸ì‹œë‚¨ëŒ€ë¬¸êµ¬", "010-1234-1234", "13ì‹œ30ë¶„", "23ì‹œ30ë¶„"));
+		this.hospitals.put("wwë³‘ì›",new Hospital("wwë³‘ì›", "ì„œìš¸ì‹œë™ëŒ€ë¬¸êµ¬", "010-1234-1234", "10ì‹œ30ë¶„", "20ì‹œ30ë¶„"));
 		
 	}
 	public HospitalManager(HashMap<String, Hospital> hospital) {

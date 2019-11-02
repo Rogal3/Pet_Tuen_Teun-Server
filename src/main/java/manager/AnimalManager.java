@@ -14,16 +14,16 @@ public class AnimalManager {
 	
 	public AnimalManager() {
 		super();
-		this.animals=new HashMap<String,HashMap<String,Animal>>();
+this.animals=new HashMap<String,HashMap<String,Animal>>();
 		
 		this.animals.put("aaa", new HashMap<String,Animal>());
-		this.animals.get("aaa").put("ÄáÀÌ", new Animal("ÄáÀÌ","°­¾ÆÁö",1,"2018/10/30","2018/10/30"));
+		this.animals.get("aaa").put("ì½©ì´", new Animal("ì½©ì´","ê°•ì•„ì§€",1,"2018/10/30","2018/10/30"));
 		
 		this.animals.put("bbb", new HashMap<String,Animal>());
-		this.animals.get("bbb").put("ÂàÀÌ", new Animal("ÄáÀÌ","ÇÜ½ºÅÍ",2,"2018/10/31","2017/5/30"));
+		this.animals.get("bbb").put("ì­Œì´", new Animal("ì½©ì´","í–„ìŠ¤í„°",2,"2018/10/31","2017/5/30"));
 		
 		this.animals.put("ccc", new HashMap<String,Animal>());
-		this.animals.get("ccc").put("¹¶ÀÌ", new Animal("ÄáÀÌ","¾Æ¸£¸¶µô·Î",5,"2018/10/30","2014/10/30"));
+		this.animals.get("ccc").put("ë­‰ì´", new Animal("ì½©ì´","ì•„ë¥´ë§ˆë”œë¡œ",5,"2018/10/30","2014/10/30"));
 		
 	}
 	public AnimalManager(HashMap<String, HashMap<String, Animal>> animals) {

@@ -14,12 +14,11 @@ public class MemberManager {
 		super();
 		this.members=new HashMap<String,Member>();
 		
-		//ÇÏµåµ¥ÀÌÅÍ ÀÏ´Ü ¹Ú¾Æ³Ö±â ³ªÁß¿¡ Áö¾î
-		this.members.put("aaa", new Member("aaa","1234", "¹Ú¼ºÀÏ", "¼­¿ïÁß¶û±¸", "010-1111-1111"));
-		this.members.put("bbb", new Member("bbb","1234", "ÀÌÀºÈ£", "¼­¿ïÁß¶û±¸", "010-1111-1111"));
-		this.members.put("ccc", new Member("ccc","1234", "ÃÖ¿ì¼®", "¼­¿ïÁß¶û±¸", "010-1111-1111"));
-		this.members.put("ddd", new Member("ddd","1234", "xxº´¿ø", "¼­¿ïÁß¶û±¸", "010-1111-1111"));
-		
+		//í•˜ë“œë°ì´í„° ì¼ë‹¨ ë°•ì•„ë„£ê¸° ë‚˜ì¤‘ì— ì§€ì–´
+				this.members.put("aaa", new Member("aaa","1234", "ë°•ì„±ì¼", "ì„œìš¸ì¤‘ë‘êµ¬", "010-1111-1111"));
+				this.members.put("bbb", new Member("bbb","1234", "ì´ì€í˜¸", "ì„œìš¸ì¤‘ë‘êµ¬", "010-1111-1111"));
+				this.members.put("ccc", new Member("ccc","1234", "ìµœìš°ì„", "ì„œìš¸ì¤‘ë‘êµ¬", "010-1111-1111"));
+				this.members.put("ddd", new Member("ddd","1234", "xxë³‘ì›", "ì„œìš¸ì¤‘ë‘êµ¬", "010-1111-1111"));
 	}
 	public MemberManager(HashMap<String, Member> members) {
 		super();

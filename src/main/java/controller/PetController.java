@@ -22,12 +22,12 @@ public class PetController {
 	public JSONObject loadHome(HttpSession session) {
 		
 		JSONObject attr=new JSONObject();
-		System.out.println("³Ñ¾î¿Â ÄíÅ° id = "+session.getId());
+		System.out.println("ë„˜ì–´ì˜¨ ì¿ í‚¤ id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
 	
 		
-		//·Î±×ÀÎµÈ ¾ÆÀÌµð¸¦ ÀúÀå.
+		//ë¡œê·¸ì¸ëœ ì•„ì´ë””ë¥¼ ì €ìž¥.
 		if(session.getAttribute("id")!=null) {
 			System.out.println(session.getAttribute("id"));
 			String id=(String)session.getAttribute("id");
@@ -39,7 +39,7 @@ public class PetController {
 			attr.put("birth",memberService.searchAnimal(id).get(0).getBirth());
 			attr.put("species",memberService.searchAnimal(id).get(0).getSpecies());
 		}else {
-			System.out.println("PetInfo -> ¼¼¼ÇgetID°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("PetInfo -> ì„¸ì…˜getIDê°€ ì—†ìŠµë‹ˆë‹¤.");
 			attr.put("msg","off");
 		}
 		

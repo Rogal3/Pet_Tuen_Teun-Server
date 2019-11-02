@@ -23,11 +23,11 @@ public class HospitalController {
 		System.out.println(id+"/"+pwd);
 		
 		JSONObject attr=new JSONObject();
-		System.out.println("³Ñ¾î¿Â ÄíÅ° id = "+session.getId());
+		System.out.println("ë„˜ì–´ì˜¨ ì¿ í‚¤ id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
 		
-		//·Î±×ÀÎµÈ ¾ÆÀÌµğ¸¦ ÀúÀå.
+		//ë¡œê·¸ì¸ëœ ì•„ì´ë””ë¥¼ ì €ì¥.
 		if(context.getAttribute(session.getId())==null) {
 			System.out.println(id+"/"+pwd);
 			//session.getServletContext().setAttribute(session.getId(), id);
@@ -38,8 +38,8 @@ public class HospitalController {
 		}
 		/*System.out.println(memberService.searchByID(id).getName());
 		if(memberService.login(id, pwd)==1) {
-			if(memberService.searchByID(id).getName().contains("º´¿ø")) {
-				System.out.println("º´¿øÀÎµğ");
+			if(memberService.searchByID(id).getName().contains("ë³‘ì›")) {
+				System.out.println("ë³‘ì›ì¸ë””");
 				attr.put("user","hospital");
 			}else {
 				attr.put("user","user");

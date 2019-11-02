@@ -17,9 +17,10 @@ public class DoctorManager {
 		this.doctors=new HashMap<String,HashMap<String,Doctor>>();
 		
 		this.doctors.put("ddd",new HashMap<String,Doctor>());
-		this.doctors.get("ddd").put("³­¼¼±¸",new Doctor("³­¼¼±¸", "¿øÀå", "°í¾çÀÌ°ú", "¸ÅÀÏ"));
-		this.doctors.get("ddd").put("±¸¼¼",new Doctor("±¸¼¼", "Á÷Ã¥1", "°­¾ÆÁö°ú", "¸ÅÀÏ"));
-		this.doctors.get("ddd").put("ÁÖ",new Doctor("ÁÖ", "Á÷Ã¥2", "¾Æ¸£¸¶µô·Î°ú", "¸ÅÀÏ"));
+		this.doctors.get("ddd").put("ë‚œì„¸êµ¬",new Doctor("ë‚œì„¸êµ¬", "ì›ì¥", "ê³ ì–‘ì´ê³¼", "ë§¤ì¼"));
+		this.doctors.get("ddd").put("êµ¬ì„¸",new Doctor("êµ¬ì„¸", "ì§ì±…1", "ê°•ì•„ì§€ê³¼", "ë§¤ì¼"));
+		this.doctors.get("ddd").put("ì£¼",new Doctor("ì£¼", "ì§ì±…2", "ì•„ë¥´ë§ˆë”œë¡œê³¼", "ë§¤ì¼"));
+
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();

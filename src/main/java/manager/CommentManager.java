@@ -16,30 +16,30 @@ public class CommentManager {
 		this.comments=new HashMap<String,ArrayList<Comment>>();
 		
 		ArrayList<Comment> cmt=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ccc","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ddd","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("bbb","¤»¤»¤»¤»¤»","19/10/30"));
+		cmt.add(new Comment("aaa","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ccc","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ddd","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("bbb","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
 		
 		ArrayList<Comment> cmt2=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ccc","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("bbb","¤»¤»¤»¤»¤»","19/10/30"));
+		cmt.add(new Comment("aaa","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ccc","ï¿½ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ï¿½","19/10/30"));
+		cmt.add(new Comment("bbb","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
 		
 		ArrayList<Comment> cmt3=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("bbb","¤»¤»¤»¤»¤»","19/10/30"));
+		cmt.add(new Comment("aaa","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("bbb","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
 		
 		ArrayList<Comment> cmt4=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ccc","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ddd","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("bbb","¤»¤»¤»¤»¤»","19/10/30"));
+		cmt.add(new Comment("aaa","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ccc","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ï¿½","19/10/30"));
+		cmt.add(new Comment("ddd","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("bbb","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
 		
 		ArrayList<Comment> cm5=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ccc","¤»¤»¤»¤»¤»","19/10/30"));
-		cmt.add(new Comment("ddd","¤»¤»¤»¤»¤»","19/10/30"));
+		cmt.add(new Comment("aaa","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ccc","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
+		cmt.add(new Comment("ddd","ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹","19/10/30"));
 		
 		this.comments.put("f1",cmt);
 		this.comments.put("n2",cmt2);

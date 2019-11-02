@@ -30,11 +30,11 @@ public class MemberController {
 		System.out.println(id+"/"+pwd);
 		
 		JSONObject attr=new JSONObject();
-		System.out.println("³Ñ¾î¿Â ÄíÅ° id = "+session.getId());
+		System.out.println("ë„˜ì–´ì˜¨ ì¿ í‚¤ id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
 		
-		//·Î±×ÀÎµÈ ¾ÆÀÌµğ¸¦ ÀúÀå.
+		//ë¡œê·¸ì¸ëœ ì•„ì´ë””ë¥¼ ì €ì¥.
 		if(context.getAttribute(session.getId())==null) {
 			System.out.println(id+"/"+pwd);
 			//session.getServletContext().setAttribute(session.getId(), id);
@@ -45,8 +45,8 @@ public class MemberController {
 		}
 		System.out.println(memberService.searchByID(id).getName());
 		if(memberService.login(id, pwd)==1) {
-			if(memberService.searchByID(id).getName().contains("º´¿ø")) {
-				System.out.println("º´¿øÀÎµğ");
+			if(memberService.searchByID(id).getName().contains("ë³‘ì›")) {
+				System.out.println("ë³‘ì›ì¸ë””");
 				session.setAttribute("type", "hospital");
 				attr.put("user","hospital");
 			}else {
@@ -70,11 +70,11 @@ public class MemberController {
 		JSONObject attr=new JSONObject();
 		JSONArray ary=new JSONArray();
 		
-		System.out.println("³Ñ¾î¿Â ÄíÅ° id = "+session.getId());
+		System.out.println("ë„˜ì–´ì˜¨ ì¿ í‚¤ id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
 		
-		//·Î±×ÀÎµÈ ¾ÆÀÌµğ¸¦ ÀúÀå.
+		//ë¡œê·¸ì¸ëœ ì•„ì´ë””ë¥¼ ì €ì¥.
 		if(session.getAttribute("id")!=null) {
 			System.out.println(session.getAttribute("id"));
 			String id=(String)session.getAttribute("id");
@@ -91,7 +91,7 @@ public class MemberController {
 				
 				ary.add(attr);
 				
-				//Áßº¹ÀÌÁö¸¸ ¿ì¾â¼ö¾øÀ½
+				//ì¤‘ë³µì´ì§€ë§Œ ìš°ì–„ìˆ˜ì—†ìŒ
 				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
 					JSONObject emp=new JSONObject();
 					
@@ -127,7 +127,7 @@ public class MemberController {
 			
 			
 		}else {
-			System.out.println("PetInfo -> ¼¼¼ÇgetID°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("PetInfo -> ì„¸ì…˜getIDê°€ ì—†ìŠµë‹ˆë‹¤.");
 			attr.put("msg","off");
 		}
 		
