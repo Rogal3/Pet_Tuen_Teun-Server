@@ -11,11 +11,9 @@ public class HospitalManager {
 	 * key name
 	 */
 	private HashMap<String,Hospital> hospitals;
-
 	public HospitalManager() {
 		super();
-		this.hospitals=new HashMap<String,Hospital>();
-		
+		this.hospitals=new HashMap<String,Hospital>();	
 		this.hospitals.put("xx병원",new Hospital("xx병원", "서울시중랑구", "010-1234-1234", "10시30분", "20시30분"));
 		this.hospitals.put("yy병원",new Hospital("yy병원", "서울시구로구", "010-1234-1234", "00시30분", "20시30분"));
 		this.hospitals.put("zz병원",new Hospital("zz병원", "서울시남대문구", "010-1234-1234", "13시30분", "23시30분"));
