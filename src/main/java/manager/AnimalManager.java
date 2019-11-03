@@ -14,11 +14,11 @@ public class AnimalManager {
 	 * key1=member.id key2=name
 	 */
 	private HashMap<String,HashMap<String,Animal>> animals;
-	@Autowired
 	private AnimalDAO animalDAO;
 	
 	public AnimalManager() {
 		super();
+		animalDAO = new AnimalDAO();
 		animals = animalDAO.load();
 	}
 	public AnimalManager(HashMap<String, HashMap<String, Animal>> animals) {

@@ -16,11 +16,13 @@ public class HospitalManager {
 	 * key name
 	 */
 	private HashMap<String,Hospital> hospitals;
-	@Autowired
+	// TODO
+	//@Autowired
 	private HospitalDAO hospitalDAO;
 	
 	public HospitalManager() {
 		super();
+		hospitalDAO = new HospitalDAO();
 		// TODO : remove comment
 		//this.hospitals=hospitalDAO.load();
 	}

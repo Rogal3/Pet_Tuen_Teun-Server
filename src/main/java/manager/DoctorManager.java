@@ -16,13 +16,15 @@ public class DoctorManager {
 	 * key1=hospitalID key2= docName;
 	 */
 	private HashMap<String,HashMap<String,Doctor>> doctors;
-	@Autowired
+	// TODO
+	//@Autowired
 	private DoctorDAO doctorDAO;
 
 	public DoctorManager() {
 		super();
-		// TODO : remove comment
-		// this.doctors=doctorDAO.load();
+		doctorDAO = new DoctorDAO();
+		// TODO
+		//this.doctors=doctorDAO.load();
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();

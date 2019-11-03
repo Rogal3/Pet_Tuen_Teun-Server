@@ -16,11 +16,13 @@ public class ReservationManager {
 	private List<Reservation> reservations;
 	@Autowired
 	private MemberManager memberManager;//媛��엯�븯吏� �븡�� �궗�엺�씠 �젒洹쇳븯�뒗嫄� 留됯린�쐞�빐�꽌 �븘�슂,李⑦썑 �쉶�썝�씠 怨좉컼�씤吏� 蹂묒썝 �쉶�썝�씤吏� �솗�씤�슜
-	@Autowired
+	// TODO
+	//@Autowired
 	private ReservationDAO reservationDAO;
 	
 	private ReservationManager() {
 		super();
+		reservationDAO = new ReservationDAO();
 		reservations = reservationDAO.load();
 	}
 	

@@ -12,14 +12,8 @@ import model.Post;
 
 @Repository("PostDAO")
 public class PostDAO extends DAO {
-	private static class LazyHolder {
-		public static final PostDAO INSTANCE = new PostDAO();
-	}
-	private PostDAO() {
+	public PostDAO() {
 		super();
-	}
-	public static PostDAO getInstance() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	private final String tableName = "post";

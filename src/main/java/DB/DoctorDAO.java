@@ -11,7 +11,7 @@ import model.Doctor;
 public class DoctorDAO extends DAO {
 	private final String tableName = "doctor";
 	
-	private DoctorDAO() {
+	public DoctorDAO() {
 		super();
 	}
 	

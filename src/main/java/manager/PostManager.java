@@ -14,11 +14,13 @@ import model.Post;
 
 public class PostManager {
 	private List<Post> posts;
-	@Autowired
+	// TODO
+	//@Autowired
 	private PostDAO postDAO;
 	
 	public PostManager() {
 		super();
+		postDAO = new PostDAO();
 		this.posts=postDAO.load();
 	}
 	public PostManager(List<Post> posts) {

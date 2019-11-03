@@ -15,17 +15,9 @@ import org.springframework.stereotype.Repository;
 import model.Member;
 
 @Repository("MemberDAO")
-public class MemberDAO extends DAO {	
-	private static class LazyHolder {
-		public static final MemberDAO INSTANCE = new MemberDAO();
-	}
-	
-	private MemberDAO() {
+public class MemberDAO extends DAO {
+	public MemberDAO() {
 		super();
-	}
-
-	public static MemberDAO getInstance() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	private List<MemberDTO> convert(HashMap<String, Member> map) {

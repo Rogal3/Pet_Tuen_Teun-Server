@@ -9,14 +9,8 @@ import model.Reservation;
 
 @Repository("ReservationDAO")
 public class ReservationDAO extends DAO {
-	private static class LazyHolder {
-		public static final ReservationDAO INSTANCE = new ReservationDAO();
-	}
-	private ReservationDAO() {
+	public ReservationDAO() {
 		super();
-	}
-	public static ReservationDAO getInstance() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	private final String tableName = "reservation";
@@ -33,7 +27,7 @@ public class ReservationDAO extends DAO {
 						rs.getString("hospitalID"),
 						rs.getString("customerID"),
 						rs.getString("reservationType"),
-						rs.getString("reservationDate"),
+						rs.getString("reservationTime"),
 						(byte) rs.getInt("isExecuted"));
 				list.add(reservation);
 			}

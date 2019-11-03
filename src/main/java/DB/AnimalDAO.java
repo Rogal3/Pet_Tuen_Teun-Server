@@ -13,14 +13,9 @@ import model.Animal;
 @Repository("AnimalDAO")
 public class AnimalDAO extends DAO {
 	private final String tableName = "animal";
-	private static class LazyHolder {
-		public static final AnimalDAO INSTANCE = new AnimalDAO();
-	}
-	private AnimalDAO() {
+	
+	public AnimalDAO() {
 		super();
-	}
-	public AnimalDAO getInstance() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	public byte insert(AnimalDTO dto) {

@@ -13,11 +13,13 @@ public class CommentManager {
 	 * key=boardID
 	 */
 	private HashMap<String, ArrayList<Comment>> comments;
-	@Autowired
+	// TODO
+	//@Autowired
 	private CommentDAO commentDAO;
 	
 	public CommentManager() {
 		super();
+		commentDAO = new CommentDAO();
 		this.comments=commentDAO.load();
 	}
 	public CommentManager(HashMap<String, ArrayList<Comment>> comments) {

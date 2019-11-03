@@ -31,10 +31,10 @@ public class DAO {
 	protected byte connect() throws SQLException {
 		byte errorCode = 0;
 		try {
-			con = DriverManager.getConnection("jdbc:mariadb://kjasmx.myds.me:3306/petteunteun", "petteunteun", "YXy4cTT2Pn4m3ZPM");
+			con = DriverManager.getConnection("jdbc:mariadb://kjasmx.myds.me:3307/petteunteun", "petteunteun", "YXy4cTT2Pn4m3ZPM");
 			errorCode = 1;
 		} catch (Exception e) {
-			System.out.println("db ¿¬°á ½ÇÆÐ : " + e.getMessage());
+			System.out.println("db ì»¤ë„¥ì…˜ ì‹¤íŒ¨ : " + e.getMessage());
 		}
 		return errorCode;
 	}
@@ -52,11 +52,12 @@ public class DAO {
 				con.close();
 			errorCode = 1;
 		} catch (Exception e) {
-			System.out.println("db ÇØÁ¦ ½ÇÆÐ : " + e.getMessage());
+			System.out.println("db ì»¤ë„¥ì…˜ í•´ì œ ì‹¤íŒ¨ : " + e.getMessage());
 		}
 		return errorCode;
 	}
 	
+	// sql í•œì¤„ ì‹¤í–‰
 	protected ResultSet execute(String sql) {
 		try {
 			connect();
@@ -69,6 +70,7 @@ public class DAO {
 		return rs;
 	}
 	
+	// sql ì—¬ëŸ¬ì¤„ ì‹¤í–‰
 	protected byte execute(List<String> sqls) {
 		byte errorCode = 0;
 		try {

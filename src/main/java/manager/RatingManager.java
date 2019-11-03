@@ -14,11 +14,13 @@ import model.Rating;
 public class RatingManager {
 	// @key : Rating.id
 	private HashMap<String,Rating> ratings;
-	@Autowired
+	// TODO
+	//@Autowired
 	private RatingDAO ratingDAO;
 
 	public RatingManager() {
 		super();
+		ratingDAO = new RatingDAO();
 		ratings = ratingDAO.load();
 	}
 

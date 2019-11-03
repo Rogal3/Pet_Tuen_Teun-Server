@@ -13,14 +13,8 @@ import model.Comment;
 
 @Repository("CommentDAO")
 public class CommentDAO extends DAO {
-	private static class LazyHolder {
-		public static CommentDAO INSTANCE = new CommentDAO();
-	}
-	private CommentDAO() {
+	public CommentDAO() {
 		super();
-	}
-	public CommentDAO getInstancce() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	private final String tableName = "comment";

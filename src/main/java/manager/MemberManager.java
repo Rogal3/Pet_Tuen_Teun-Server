@@ -13,11 +13,11 @@ import model.Member;
 @Service
 public class MemberManager {
 	private HashMap<String,Member> members;
-	@Autowired
 	private MemberDAO memberDAO;
 
 	public MemberManager() {
 		super();
+		memberDAO = new MemberDAO();
 		this.members=memberDAO.load();
 	}
 	public MemberManager(HashMap<String, Member> members) {

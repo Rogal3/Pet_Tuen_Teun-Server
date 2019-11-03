@@ -11,14 +11,8 @@ import model.Rating;
 
 @Repository("RatingDAO")
 public class RatingDAO extends DAO {
-	private static class LazyHolder {
-		public static final RatingDAO INSTANCE = new RatingDAO();
-	}
-	private RatingDAO() {
+	public RatingDAO() {
 		super();
-	}
-	public static RatingDAO getInstance() {
-		return LazyHolder.INSTANCE;
 	}
 	
 	private final String tableName = "rating";
@@ -69,7 +63,7 @@ public class RatingDAO extends DAO {
 				Rating model = new Rating(
 						rs.getString("id"),
 						rs.getString("writer"),
-						rs.getString("hopspital"),
+						rs.getString("hospital"),
 						rs.getInt("scale"),
 						rs.getString("content"));
 				map.put(model.getId(), model);
