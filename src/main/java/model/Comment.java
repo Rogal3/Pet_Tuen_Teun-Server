@@ -14,11 +14,11 @@ public class Comment {
 		this.content = content;
 		this.writeTime = writeTime;
 	}
-	public String getWrite() {
+	public String getWriter() {
 		return writer;
 	}
-	public void setWrite(String write) {
-		this.writer = write;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public String getContent() {
 		return content;

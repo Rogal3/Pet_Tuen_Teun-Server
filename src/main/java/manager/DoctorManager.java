@@ -18,12 +18,6 @@ public class DoctorManager {
 	public DoctorManager() {
 		super();
 		this.doctors=new HashMap<String,HashMap<String,Doctor>>();
-		
-		this.doctors.put("ddd",new HashMap<String,Doctor>());
-		this.doctors.get("ddd").put("난세구",new Doctor("난세구", "원장", "고양이과", "매일"));
-		this.doctors.get("ddd").put("구세",new Doctor("구세", "직책1", "강아지과", "매일"));
-		this.doctors.get("ddd").put("주",new Doctor("주", "직책2", "아르마딜로과", "매일"));
-
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();

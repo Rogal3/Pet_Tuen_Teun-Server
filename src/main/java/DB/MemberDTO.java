@@ -1,6 +1,7 @@
 package DB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MemberDTO implements Serializable {
 	private String id;
@@ -55,5 +56,4 @@ public class MemberDTO implements Serializable {
 		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address
 				+ ", phoneNum=" + phoneNum + "]";
 	}
-	
 }

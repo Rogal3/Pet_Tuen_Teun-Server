@@ -14,45 +14,6 @@ public class PostManager {
 		super();
 		this.posts=new HashMap<String,Post>();
 		this.boardTypeList=new HashMap<String,ArrayList<Post>>();
-		
-		ArrayList<Post> f1=new ArrayList<Post>();
-		f1.add(new Post("f1","favorite","title","aaa","asdf","19.10.30"));
-		f1.add(new Post("f2","favorite","title1","bbb","asdf","19.10.30"));
-		f1.add(new Post("f3","favorite","title2","ccc","asdf","19.10.30"));
-		f1.add(new Post("f4","favorite","title3","ccc","asdf","19.10.30"));
-		f1.add(new Post("f5","favorite","title4","aaa","asdf","19.10.30"));
-		
-		ArrayList<Post> n1=new ArrayList<Post>();
-		f1.add(new Post("n1","new","title","aaa","asdf","19.10.30"));
-		f1.add(new Post("n2","new","title","bbb","asdf","19.10.30"));
-		f1.add(new Post("n3","new","title","ccc","asdf","19.10.30"));
-		f1.add(new Post("n4","new","title","ccc","asdf","19.10.30"));
-		f1.add(new Post("n5","new","title","aaa","asdf","19.10.30"));
-		
-		ArrayList<Post> m1=new ArrayList<Post>();
-		f1.add(new Post("m1","my","title","aaa","asdf","19.10.30"));
-		f1.add(new Post("m2","my","title","bbb","asdf","19.10.30"));
-		f1.add(new Post("m3","my","title","ccc","asdf","19.10.30"));
-		f1.add(new Post("m4","my","title","ccc","asdf","19.10.30"));
-		f1.add(new Post("m5","my","title","aaa","asdf","19.10.30"));
-		
-		ArrayList<Post> t1=new ArrayList<Post>();
-		f1.add(new Post("t1","tip","title","ddd","asdf","19.10.30"));
-		f1.add(new Post("t2","tip","title","ddd","asdf","19.10.30"));
-		f1.add(new Post("t3","tip","title","ddd","asdf","19.10.30"));
-		f1.add(new Post("t4","tip","title","ccc","asdf","19.10.30"));
-		f1.add(new Post("t5","tip","title","aaa","asdf","19.10.30"));
-		
-		for(int i=0;i<5;i++) {
-			this.posts.put(f1.get(i).getId(),f1.get(i));
-			this.posts.put(n1.get(i).getId(),n1.get(i));
-			this.posts.put(m1.get(i).getId(),m1.get(i));
-			this.posts.put(t1.get(i).getId(),t1.get(i));
-		}
-		this.boardTypeList.put("favorite", f1);
-		this.boardTypeList.put("new", n1);
-		this.boardTypeList.put("my", m1);
-		this.boardTypeList.put("tip", t1);
 	}
 	public PostManager(HashMap<String, Post> posts, HashMap<String, ArrayList<Post>> boardTypeList) {
 		super();
@@ -118,14 +79,14 @@ public class PostManager {
 		}
 		return emp;
 	}
-	public byte modifyBoard(String id,Post post) {
+	public byte modifyPost(String id, Post post) {
 		if(searchById(id)==null)return 0;
 		
 		this.posts.put(id, post);
 		
 		return 1;
 	}
-	public byte deleteBoard(String id) {
+	public byte deletePost(String id) {
 		if(searchById(id)==null)return 0;
 		this.posts.remove(id);
 		return 1;

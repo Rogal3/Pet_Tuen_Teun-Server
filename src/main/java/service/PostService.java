@@ -10,6 +10,11 @@ import model.Comment;
 public class PostService {
 	private PostManager PostManager;
 	private CommentManager commentManager;
+	public PostService() {
+		super();
+		this.PostManager = new PostManager();
+		this.commentManager = new CommentManager();
+	}
 	public PostService(PostManager postManager, CommentManager commentManager) {
 		super();
 		this.PostManager = postManager;
@@ -34,9 +39,9 @@ public class PostService {
 		return this.searchBoardByWriter(writer);
 	}
 	/**
-	 * Å¸ÀÔ°ú ÀÛ¼ºÀÚ·Î °Ë»öÀÎµ¥ ÀÏ´Ü º¸·ù!
-	 * @param writer ÀÛ¼ºÀÚ
-	 * @param type Å¸ÀÔ
+	 * Å¸ï¿½Ô°ï¿½ ï¿½Û¼ï¿½ï¿½Ú·ï¿½ ï¿½Ë»ï¿½ï¿½Îµï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½!
+	 * @param writer ï¿½Û¼ï¿½ï¿½ï¿½
+	 * @param type Å¸ï¿½ï¿½
 	 * @return
 	 */
 	public ArrayList<Post> searchBoardByWrterOfType(String writer,String type){
@@ -68,7 +73,7 @@ public class PostService {
 		return this.PostManager.addBoard(board);
 	}
 	public byte deleteBoard(String id) {
-		return this.PostManager.deleteBoard(id);
+		return this.PostManager.deletePost(id);
 	}
 	public byte addBoard(Post post) {
 		return this.PostManager.addBoard(post);
