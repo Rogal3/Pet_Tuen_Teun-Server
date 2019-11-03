@@ -57,7 +57,6 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByCustomerID(String customerID){
 		ArrayList<Reservation> list=new ArrayList<Reservation>();
-		System.out.println(reservations.size());
 		for(int i=0;i<reservations.size();i++) {
 			Reservation item=reservations.get(i);
 			if(item.getCutomerID().equals(customerID)) {
@@ -80,7 +79,6 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByMemberID(String memberID,String type){
 		ArrayList<Reservation> list=null;
-		System.out.println(type+"?"+memberID);
 		if("hospital".equals(type)) {
 			list=searchReservationsByHospitalID(memberID);
 		}

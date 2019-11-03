@@ -82,7 +82,6 @@ public class MemberController {
 		
 		//로그인된 아이디를 저장.
 		if(session.getAttribute("id")!=null) {
-			System.out.println(session.getAttribute("id"));
 			String id=(String)session.getAttribute("id");
 			
 			attr.put("msg","ok");
@@ -98,7 +97,6 @@ public class MemberController {
 				
 				//중복이지만 우얄수없음
 				ArrayList<Reservation> reservations=hospitalService.searchReservation(id);
-				System.out.println("개수 : "+reservations.size());
 				for(int i=0;i<reservations.size();++i) {
 					JSONObject emp=new JSONObject();
 					Reservation item=reservations.get(i);
