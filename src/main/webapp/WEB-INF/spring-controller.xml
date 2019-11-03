@@ -17,4 +17,5 @@
 	<bean id="RatingManager" class="manager.RatingManager"></bean>
 	<bean id="DoctorManager" class="manager.DoctorManager"></bean>
 	<bean id="ReservationManager" class="manager.ReservationManager"></bean>
+	<bean id="AnimalManager" class="manager.AnimalManager"></bean>
 </beans>

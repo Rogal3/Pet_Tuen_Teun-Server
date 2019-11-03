@@ -21,7 +21,8 @@ public class MemberManager {
 				this.members.put("aaa", new Member("aaa","1234", "박성일", "서울중랑구", "010-1111-1111"));
 				this.members.put("bbb", new Member("bbb","1234", "이은호", "서울중랑구", "010-1111-1111"));
 				this.members.put("ccc", new Member("ccc","1234", "최우석", "서울중랑구", "010-1111-1111"));
-				this.members.put("ddd", new Member("ddd","1234", "xx병원", "서울중랑구", "010-1111-1111"));
+				this.members.put("ddd", new Member("ddd","1234", "xx병원", "서울중랑구", "010-1111-1111"));this.members.put("ddd", new Member("ddd","1234", "xx병원", "서울중랑구", "010-1111-1111"));
+				this.members.put("xxx", new Member("xxx","1234", "N동물의료센터 노원점", "서울특별시 노원구 노원로 456 백암빌딩", "02-919-0075"));
 	}
 	public MemberManager(HashMap<String, Member> members) {
 		super();
@@ -115,7 +116,6 @@ public class MemberManager {
 	}
 	public byte addMember(Member member) {
 		if(searchMemberByID(member.getId())!=null)return 0;
-		
 		this.members.put(member.getId(),member);
 		return 1;
 	}

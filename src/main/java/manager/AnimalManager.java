@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import model.Animal;
+import org.springframework.stereotype.Service;
 
+import model.Animal;
+@Service
 public class AnimalManager {
 	/**
 	 * key1=owner key2 name

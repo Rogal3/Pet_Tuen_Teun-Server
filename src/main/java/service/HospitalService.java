@@ -85,6 +85,7 @@ public class HospitalService {
 	}
 	
 	public ArrayList<Reservation> searchReservation(String memberID){
+		System.out.println(memberManager.searchMemberByID(memberID));
 		String type=memberManager.searchMemberByID(memberID).getType();
 		return this.reservationManager.searchReservationsByMemberID(memberID, type);
 	}
