@@ -162,24 +162,17 @@ public class ReservationManager {
 		
 		return settingInfo(item,type,date,is);
 	}
-<<<<<<< HEAD
 	//삭제는 그 예약관 관련된 고객이나 병원 회원만 가능하다.
 	public byte deleteReservationByID(String reservationID,String memberID) {
-=======
-	//�궘�젣�뒗 洹� �삁�빟愿� 愿��젴�맂 怨좉컼�씠�굹 蹂묒썝 �쉶�썝留� 媛��뒫�븯�떎.
-	public byte delteReservationByID(String reservationID,String memberID) {
->>>>>>> refs/remotes/origin/rogal3-fuck
+
 		Member member=memberManager.searchMemberByID(memberID);
 		//議댁옱�븯吏� �븡�뒗 �쉶�썝�씪 寃쎌슦
 		if(member==null)
 			return 0;
 		int index=searchReservationIndexByID(reservationID);
-<<<<<<< HEAD
 		//존재하지 않는 예약일 경우
 		System.out.println("index"+index);
-=======
-		//議댁옱�븯吏� �븡�뒗 �삁�빟�씪 寃쎌슦
->>>>>>> refs/remotes/origin/rogal3-fuck
+
 		if(index < 0)
 			return 0;
 		Reservation item=searchReservationByIndex(index);
