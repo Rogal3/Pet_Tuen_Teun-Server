@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import model.Member;
 import model.Reservation;
 
+@Service
 public class ReservationManager {
 	private ArrayList<Reservation> reservations;
 	@Autowired
