@@ -3,8 +3,11 @@ package DB;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.Reservation;
 
+@Repository("ReservationDAO")
 public class ReservationDAO extends DAO {
 	private static class LazyHolder {
 		public static final ReservationDAO INSTANCE = new ReservationDAO();

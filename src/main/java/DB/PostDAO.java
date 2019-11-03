@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.Post;
 
+@Repository("PostDAO")
 public class PostDAO extends DAO {
 	private static class LazyHolder {
 		public static final PostDAO INSTANCE = new PostDAO();

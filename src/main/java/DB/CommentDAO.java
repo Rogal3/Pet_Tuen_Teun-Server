@@ -7,8 +7,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.Comment;
 
+@Repository("CommentDAO")
 public class CommentDAO extends DAO {
 	private static class LazyHolder {
 		public static CommentDAO INSTANCE = new CommentDAO();

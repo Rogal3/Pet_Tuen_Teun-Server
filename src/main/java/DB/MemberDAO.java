@@ -10,8 +10,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.Member;
 
+@Repository("MemberDAO")
 public class MemberDAO extends DAO {	
 	private static class LazyHolder {
 		public static final MemberDAO INSTANCE = new MemberDAO();

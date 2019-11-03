@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.Rating;
 
+@Repository("RatingDAO")
 public class RatingDAO extends DAO {
 	private static class LazyHolder {
 		public static final RatingDAO INSTANCE = new RatingDAO();
