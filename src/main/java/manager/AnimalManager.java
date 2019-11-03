@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import DB.AnimalDAO;
 import model.Animal;
 
 public class AnimalManager {
@@ -11,9 +14,12 @@ public class AnimalManager {
 	 * key1=member.id key2=name
 	 */
 	private HashMap<String,HashMap<String,Animal>> animals;
+	@Autowired
+	private AnimalDAO animalDAO;
 	
 	public AnimalManager() {
 		super();
+		animals = animalDAO.load();
 	}
 	public AnimalManager(HashMap<String, HashMap<String, Animal>> animals) {
 		super();

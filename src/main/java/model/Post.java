@@ -11,14 +11,14 @@ public class Post {
 	public Post() {
 		super();
 	}
-	public Post(String id, String type, String title, String writer, String content, String wirteTime) {
+	public Post(String id, String type, String title, String writer, String content, String writeTime) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
-		this.writeTime = wirteTime;
+		this.writeTime = writeTime;
 	}
 	public String getId() {
 		return id;

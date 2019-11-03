@@ -3,6 +3,9 @@ package manager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import DB.CommentDAO;
 import model.Comment;
 
 public class CommentManager {
@@ -10,10 +13,12 @@ public class CommentManager {
 	 * key=boardID
 	 */
 	private HashMap<String, ArrayList<Comment>> comments;
+	@Autowired
+	private CommentDAO commentDAO;
 	
 	public CommentManager() {
 		super();
-		this.comments=new HashMap<String,ArrayList<Comment>>();
+		this.comments=commentDAO.load();
 	}
 	public CommentManager(HashMap<String, ArrayList<Comment>> comments) {
 		super();

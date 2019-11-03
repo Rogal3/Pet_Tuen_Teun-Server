@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import manager.PostManager;
 import manager.CommentManager;
@@ -10,80 +11,80 @@ import model.Comment;
 public class PostService {
 	private PostManager PostManager;
 	private CommentManager commentManager;
+	
 	public PostService() {
 		super();
 		this.PostManager = new PostManager();
 		this.commentManager = new CommentManager();
 	}
+	
 	public PostService(PostManager postManager, CommentManager commentManager) {
 		super();
 		this.PostManager = postManager;
 		this.commentManager = commentManager;
 	}
-	public PostManager getBoardManager() {
+	
+	public PostManager getPostManager() {
 		return PostManager;
 	}
-	public void setBoardManager(PostManager postManager) {
+	
+	public void setPostManager(PostManager postManager) {
 		this.PostManager = postManager;
 	}
+	
 	public CommentManager getCommentManager() {
 		return commentManager;
 	}
+	
 	public void setCommentManager(CommentManager commentManager) {
 		this.commentManager = commentManager;
 	}
-	public ArrayList<Post> searchBoardByType(String type){
+	
+	public List<Post> searchPostByType(String type){
 		return this.PostManager.searchByType(type);
 	}
-	public ArrayList<Post> searchBoardByWriter(String writer){
-		return this.searchBoardByWriter(writer);
+	
+	public ArrayList<Post> searchPostByWriter(String writer){
+		return this.searchPostByWriter(writer);
 	}
-	/**
-	 * Ÿ�԰� �ۼ��ڷ� �˻��ε� �ϴ� ����!
-	 * @param writer �ۼ���
-	 * @param type Ÿ��
-	 * @return
-	 */
-	public ArrayList<Post> searchBoardByWrterOfType(String writer,String type){
-		return this.PostManager.searchBoardByWriter(writer);
+	
+	public List<Post> searchPostByWrterOfType(String writer,String type){
+		return this.PostManager.searchByWriter(writer);
 	}
-	public ArrayList<Post> searchBoardByTitle(String title,String type){
-		ArrayList<Post> emp=new ArrayList<Post>();
-		if("total".equals(type)) {
-			ArrayList<String> types=searchBoardType();
-			
-			for(int i=0;i<types.size();++i) {
-				ArrayList<Post> postList=this.PostManager.searchByType(types.get(i));
-				for(int j=0;j<postList.size();++j) {
-					emp.add(postList.get(j));
-				}
-			}
+	public List<Post> searchPostByTitle(String title,String type){
+		List<Post> list = null;
+		if(type.equals("total")) {
+			list = this.PostManager.searchByTitle(title);
 		}else {
-			ArrayList<Post> postList=this.PostManager.searchByType(type);
-			for(int i=0;i<postList.size();++i) {
-				emp.add(postList.get(i));
-			}
+			list = this.PostManager.searchByTypeAndTitle(type, title);
 		}
-		return emp;
+		return list;
 	}
-	public ArrayList<String> searchBoardType(){
-		return this.PostManager.searchTypes();
+	
+	public List<String> searchBoardType(){
+		return this.PostManager.getTypes();
 	}
+	
 	public byte modifyBoard(String id,Post board) {
 		return this.PostManager.addBoard(board);
 	}
+	
 	public byte deleteBoard(String id) {
 		return this.PostManager.deletePost(id);
 	}
+	
 	public byte addBoard(Post post) {
 		return this.PostManager.addBoard(post);
 	}
+	
 	public byte addComment(String boardID,Comment comment) {
 		return this.commentManager.addComment(boardID, comment);
 	}
+	
 	public byte deleteComment(String boardID,Comment comment) {
 		return this.commentManager.deleteComment(boardID,comment.getWriteTime());
 	}
+	
 	public byte modifyComment(String boardID,Comment comment){
 		return this.commentManager.modifyComment(boardID, comment);
 	}

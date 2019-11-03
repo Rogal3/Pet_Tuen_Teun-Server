@@ -94,9 +94,6 @@ public class HospitalService {
 	public ArrayList<Hospital> searchHospital(String curTime){
 		return this.hospitalManager.searchHospitalByTime(curTime);
 	}
-	public byte modifyDoctorTime(String hospitalID,String name,String time) {
-		return this.doctorManager.modifyDoctorTime(hospitalID, name, time);
-	}
 	public byte addDoctor(String hospitalID,Doctor doctor) {
 		return this.doctorManager.addDoctor(hospitalID, doctor);
 	}

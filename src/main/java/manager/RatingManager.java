@@ -4,26 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.RatingDAO;
 import model.Rating;
 
 @Service
 public class RatingManager {
 	// @key : Rating.id
 	private HashMap<String,Rating> ratings;
-	private String lastId;
+	@Autowired
+	private RatingDAO ratingDAO;
 
 	public RatingManager() {
 		super();
-		ratings = new HashMap<String, Rating>();
-		lastId = "0";
+		ratings = ratingDAO.load();
 	}
 
 	public RatingManager(HashMap<String,Rating> ratings, String lastId) {
 		super();
 		this.ratings = ratings;
-		this.lastId = lastId;
 	}
 
 	public HashMap<String, Rating> getRatings() {
@@ -32,12 +33,6 @@ public class RatingManager {
 
 	public void setRatings(HashMap<String, Rating> ratings) {
 		this.ratings = ratings;
-	}
-	public String getLastId() {
-		return lastId;
-	}
-	public void setLastId(String lastId) {
-		this.lastId = lastId;
 	}
 	public ArrayList<Rating> searchRatingById(String id) {
 		ArrayList<Rating> list = new ArrayList<Rating>();
@@ -103,12 +98,6 @@ public class RatingManager {
 		ratings.put(id, rating);
 		return 1;
 	}
-	private static String addOne(String id) {
-		int iid = Integer.parseInt(id);
-		iid = iid + 1;
-		id = Integer.toString(iid);
-		return id;
-	}
 	public byte addRating(Rating rating) {
 		ArrayList<Rating> list = searchRatingById(rating.getId());
 		if (list.size() == 0) {
@@ -120,9 +109,9 @@ public class RatingManager {
 	public byte addRating(String writer, String hospital, int scale, String content) {
 		ArrayList<Rating> list = search(writer, hospital);
 		if (list.size() == 0) {
-			lastId = addOne(lastId);
-			Rating rating = new Rating(lastId, writer, hospital, scale, content);
-			ratings.put(lastId, rating);
+			String id = writer + "#" + hospital;
+			Rating rating = new Rating(id, writer, hospital, scale, content);
+			ratings.put(id, rating);
 		}
 		return 1;
 	}

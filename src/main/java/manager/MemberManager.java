@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.MemberDAO;
 import model.Member;
 
 @Service
 public class MemberManager {
 	private HashMap<String,Member> members;
-
+	@Autowired
+	private MemberDAO memberDAO;
 
 	public MemberManager() {
 		super();
-		this.members=new HashMap<String,Member>();
+		this.members=memberDAO.load();
 	}
 	public MemberManager(HashMap<String, Member> members) {
 		super();

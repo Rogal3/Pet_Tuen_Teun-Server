@@ -2,21 +2,26 @@ package manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.ReservationDAO;
 import model.Member;
 import model.Reservation;
 
 @Service
 public class ReservationManager {
-	private ArrayList<Reservation> reservations;
+	private List<Reservation> reservations;
 	@Autowired
 	private MemberManager memberManager;//媛��엯�븯吏� �븡�� �궗�엺�씠 �젒洹쇳븯�뒗嫄� 留됯린�쐞�빐�꽌 �븘�슂,李⑦썑 �쉶�썝�씠 怨좉컼�씤吏� 蹂묒썝 �쉶�썝�씤吏� �솗�씤�슜
+	@Autowired
+	private ReservationDAO reservationDAO;
 	
 	private ReservationManager() {
-		super();		
+		super();
+		reservations = reservationDAO.load();
 	}
 	
 	public ReservationManager(ArrayList<Reservation> reservations) {

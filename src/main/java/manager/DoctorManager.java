@@ -4,20 +4,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.DoctorDAO;
 import model.Doctor;
 
 @Service
 public class DoctorManager {
 	/**
-	 * key1=hospitalID key2= docname;
+	 * key1=hospitalID key2= docName;
 	 */
 	private HashMap<String,HashMap<String,Doctor>> doctors;
+	@Autowired
+	private DoctorDAO doctorDAO;
 
 	public DoctorManager() {
 		super();
-		this.doctors=new HashMap<String,HashMap<String,Doctor>>();
+		// TODO : remove comment
+		// this.doctors=doctorDAO.load();
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();
@@ -51,11 +56,6 @@ public class DoctorManager {
 		
 		this.doctors.get(hospitalID).put(doctor.getName(),doctor);
 		return 1;
-	}
-	public byte modifyDoctorTime(String hospitalID,String doctorName,String time) {
-		if(searchDoctor(hospitalID, doctorName)==null)return 0;
-		return this.doctors.get(hospitalID).get(doctorName).modifyWorkingTime(time);
-		
 	}
 	public byte deleteDoctor(String hospitalID,String name) {
 		if(searchDoctor(hospitalID, name)==null)return 0;

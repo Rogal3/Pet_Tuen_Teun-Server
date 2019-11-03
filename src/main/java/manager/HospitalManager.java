@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.HospitalDAO;
 import model.Hospital;
 
 @Service
@@ -14,14 +16,13 @@ public class HospitalManager {
 	 * key name
 	 */
 	private HashMap<String,Hospital> hospitals;
+	@Autowired
+	private HospitalDAO hospitalDAO;
+	
 	public HospitalManager() {
 		super();
-		this.hospitals=new HashMap<String,Hospital>();	
-		this.hospitals.put("xx병원",new Hospital("xx병원", "서울시중랑구", "010-1234-1234", "10시30분", "20시30분"));
-		this.hospitals.put("yy병원",new Hospital("yy병원", "서울시구로구", "010-1234-1234", "00시30분", "20시30분"));
-		this.hospitals.put("zz병원",new Hospital("zz병원", "서울시남대문구", "010-1234-1234", "13시30분", "23시30분"));
-		this.hospitals.put("ww병원",new Hospital("ww병원", "서울시동대문구", "010-1234-1234", "10시30분", "20시30분"));
-		
+		// TODO : remove comment
+		//this.hospitals=hospitalDAO.load();
 	}
 	public HospitalManager(HashMap<String, Hospital> hospital) {
 		super();
