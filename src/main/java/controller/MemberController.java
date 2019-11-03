@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,7 @@ public class MemberController {
 	@RequestMapping(value="/login.do")
 	@ResponseBody
 	public JSONObject loadHome(HttpSession session,@RequestParam("id")String id,@RequestParam("password")String pwd) {
+		
 		System.out.println(id+"/"+pwd);
 		
 		JSONObject attr=new JSONObject();
@@ -64,7 +66,6 @@ public class MemberController {
 		}else {
 			attr.put("msg", "fail");
 		}
-		
 		
 		return attr;
 	}

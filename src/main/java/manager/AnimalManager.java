@@ -20,10 +20,10 @@ this.animals=new HashMap<String,HashMap<String,Animal>>();
 		this.animals.get("aaa").put("콩이", new Animal("콩이","강아지",1,"2018/10/30","2018/10/30"));
 		
 		this.animals.put("bbb", new HashMap<String,Animal>());
-		this.animals.get("bbb").put("쭌이", new Animal("콩이","햄스터",2,"2018/10/31","2017/5/30"));
+		this.animals.get("bbb").put("쭌이", new Animal("쭌이","햄스터",2,"2018/10/31","2017/5/30"));
 		
 		this.animals.put("ccc", new HashMap<String,Animal>());
-		this.animals.get("ccc").put("뭉이", new Animal("콩이","아르마딜로",5,"2018/10/30","2014/10/30"));
+		this.animals.get("ccc").put("뭉이", new Animal("뭉이","아르마딜로",5,"2018/10/30","2014/10/30"));
 		
 	}
 	public AnimalManager(HashMap<String, HashMap<String, Animal>> animals) {
