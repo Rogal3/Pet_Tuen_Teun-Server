@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.stereotype.Service;
+
 import model.Rating;
 
+@Service
 public class RatingManager {
 	private HashMap<String,Rating> ratings;
 

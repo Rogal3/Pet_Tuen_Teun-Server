@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.stereotype.Service;
+
 import model.Doctor;
 
+@Service
 public class DoctorManager {
 	/**
 	 * key1=hospitalID key2= docname;
