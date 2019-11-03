@@ -10,6 +10,7 @@ import model.Rating;
 
 @Service
 public class RatingManager {
+	
 	private HashMap<String,Rating> ratings;
 
 	public RatingManager() {

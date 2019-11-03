@@ -19,12 +19,14 @@ public class ReservationManager {
 		super();
 		reservations=new ArrayList<Reservation>();
 		reservations.add(new Reservation("r001","ddd", "aaa", "예방접종","19/09/30",(byte)1));
-		reservations.add(new Reservation("r002","ddd", "aaa", "진단","19/10/10",(byte)1));
+		reservations.add(new Reservation("r002","ddd", "aaa", "진단","19/10/13",(byte)1));
 		reservations.add(new Reservation("r003","ddd", "aaa", "진단","19/10/11",(byte)1));
 		reservations.add(new Reservation("r004","ddd", "aaa", "예방접종","19/10/14",(byte)1));	
+		
 		reservations.add(new Reservation("r004","ddd", "bbb", "예방접종","19/09/30",(byte)1));
 		reservations.add(new Reservation("r005","ddd", "bbb", "진단","19/10/10",(byte)1));
 		reservations.add(new Reservation("r006","ddd", "bbb", "진단","19/10/11",(byte)1));
+		
 		reservations.add(new Reservation("r007","ddd", "ccc", "예방접종","19/09/30",(byte)1));
 		reservations.add(new Reservation("r008","ddd", "ccc", "진단","19/10/10",(byte)1));
 		reservations.add(new Reservation("r009","ddd", "ccc", "진단","19/10/11",(byte)1));
@@ -38,7 +40,7 @@ public class ReservationManager {
 	//해당하는 방번호 리턴(내부로직용이라고 생각해서 private 썻다.	
 	private int searchReservationIndexByID(String id) {
 		for(int i=0;i<reservations.size();i++)
-			if(reservations.get(i).getId()==id)
+			if(reservations.get(i).getId().equals(id))
 				return i;
 		return -1;//없으면 -1
 	}
@@ -57,7 +59,6 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByCustomerID(String customerID){
 		ArrayList<Reservation> list=new ArrayList<Reservation>();
-		System.out.println(reservations.size());
 		for(int i=0;i<reservations.size();i++) {
 			Reservation item=reservations.get(i);
 			if(item.getCutomerID().equals(customerID)) {
@@ -80,7 +81,7 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByMemberID(String memberID,String type){
 		ArrayList<Reservation> list=null;
-		System.out.println(type+"?"+memberID);
+		
 		if("hospital".equals(type)) {
 			list=searchReservationsByHospitalID(memberID);
 		}
@@ -169,13 +170,14 @@ public class ReservationManager {
 		return settingInfo(item,type,date,is);
 	}
 	//삭제는 그 예약관 관련된 고객이나 병원 회원만 가능하다.
-	public byte delteReservationByID(String reservationID,String memberID) {
+	public byte deleteReservationByID(String reservationID,String memberID) {
 		Member member=memberManager.searchMemberByID(memberID);
 		//존재하지 않는 회원일 경우
 		if(member==null)
 			return 0;
 		int index=searchReservationIndexByID(reservationID);
 		//존재하지 않는 예약일 경우
+		System.out.println("index"+index);
 		if(index < 0)
 			return 0;
 		Reservation item=searchReservationByIndex(index);

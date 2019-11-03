@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Enumeration;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -10,22 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import VO.ReservationCancelVO;
 import service.HospitalService;
+import service.ReservationService;
 
 @Controller
 public class HospitalController {
 	@Autowired
-	private HospitalService hospital;
-	
+	private HospitalService hospitalService;
+	@Autowired
+	private ReservationService ReservationService;
 	@RequestMapping(value="/cancel.do")
 	@ResponseBody//일단 이거 넣어야 string이나 json으로 전달되네
-	public String cancelReserve(@RequestParam("id")String id){
-		String result="";
-		System.out.println("id : "+id);
-		result="ok";
+	public String cancelReserve(ReservationCancelVO vo){
 		//삭제 로직을 넣어야한다.
-		return result;
+		int result;
+		System.out.println(vo.getMemberID()+"/"+vo.getReserveID());
+		result=ReservationService.deleteReservation(vo.getReserveID(),vo.getMemberID());	
+		System.out.println(result);
+		if(result == 1)
+			return "ok";
+		else
+			return "false";
 	}
+	
 	@RequestMapping(value="/listView.do")
 	@ResponseBody
 	public JSONObject loadHome(HttpSession session,@RequestParam("id")String id,@RequestParam("password")String pwd) {
