@@ -4,26 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.DoctorDAO;
 import model.Doctor;
 
 @Service
 public class DoctorManager {
 	/**
-	 * key1=hospitalID key2= docname;
+	 * key1=hospitalID key2= docName;
 	 */
 	private HashMap<String,HashMap<String,Doctor>> doctors;
+	// TODO
+	//@Autowired
+	private DoctorDAO doctorDAO;
 
 	public DoctorManager() {
 		super();
-		this.doctors=new HashMap<String,HashMap<String,Doctor>>();
-		
-		this.doctors.put("ddd",new HashMap<String,Doctor>());
-		this.doctors.get("ddd").put("난세구",new Doctor("난세구", "원장", "고양이과", "매일"));
-		this.doctors.get("ddd").put("구세",new Doctor("구세", "직책1", "강아지과", "매일"));
-		this.doctors.get("ddd").put("주",new Doctor("주", "직책2", "아르마딜로과", "매일"));
-
+		doctorDAO = new DoctorDAO();
+		// TODO
+		//this.doctors=doctorDAO.load();
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();
@@ -57,11 +58,6 @@ public class DoctorManager {
 		
 		this.doctors.get(hospitalID).put(doctor.getName(),doctor);
 		return 1;
-	}
-	public byte modifyDoctorTime(String hospitalID,String doctorName,String time) {
-		if(searchDoctor(hospitalID, doctorName)==null)return 0;
-		return this.doctors.get(hospitalID).get(doctorName).modifyWorkingTime(time);
-		
 	}
 	public byte deleteDoctor(String hospitalID,String name) {
 		if(searchDoctor(hospitalID, name)==null)return 0;

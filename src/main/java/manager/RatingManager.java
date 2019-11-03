@@ -4,20 +4,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.RatingDAO;
 import model.Rating;
 
 @Service
 public class RatingManager {
-	
+
+	// @key : Rating.id
 	private HashMap<String,Rating> ratings;
+	// TODO
+	//@Autowired
+	private RatingDAO ratingDAO;
 
 	public RatingManager() {
 		super();
+		ratingDAO = new RatingDAO();
+		ratings = ratingDAO.load();
 	}
 
-	public RatingManager(HashMap<String,Rating> ratings) {
+	public RatingManager(HashMap<String,Rating> ratings, String lastId) {
 		super();
 		this.ratings = ratings;
 	}
@@ -61,6 +69,30 @@ public class RatingManager {
 		}
 		return list;
 	}
+	public ArrayList<Rating> search(String writer, String hospital) {
+		Iterator<String> keys = ratings.keySet().iterator();
+		ArrayList<Rating> list = new ArrayList<Rating>();
+		while (keys.hasNext()) {
+			String key = keys.next();
+			Rating data = ratings.get(key);
+			if (data.getHospital().equals(hospital) && data.getWriter().equals(writer)) {
+				list.add(data);
+			}
+		}
+		return list;
+	}
+	public double getHospitalRating(String hospital) {
+		ArrayList<Rating> list = searchRatingByHospital(hospital);
+		int size = list.size();
+		if (size == 0) {
+			return 0;
+		}
+		int sum = 0;
+		for (Rating rating : list) {
+			sum += rating.getScale();
+		}
+		return (double)sum / size;
+	}
 	public byte modifyRating(String id, Rating rating) {
 		ArrayList<Rating> list = searchRatingById(id);
 		if (list.size() == 0) {
@@ -75,6 +107,15 @@ public class RatingManager {
 			return 0;
 		}
 		ratings.put(rating.getId(), rating);
+		return 1;
+	}
+	public byte addRating(String writer, String hospital, int scale, String content) {
+		ArrayList<Rating> list = search(writer, hospital);
+		if (list.size() == 0) {
+			String id = writer + "#" + hospital;
+			Rating rating = new Rating(id, writer, hospital, scale, content);
+			ratings.put(id, rating);
+		}
 		return 1;
 	}
 	public byte deleteRating(String id) {

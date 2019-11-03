@@ -95,16 +95,14 @@ public class HospitalService {
 	public ArrayList<Hospital> searchHospital(String curTime){
 		return this.hospitalManager.searchHospitalByTime(curTime);
 	}
-	public byte modifyDoctorTime(String hospitalID,String name,String time) {
-		return this.doctorManager.modifyDoctorTime(hospitalID, name, time);
-	}
 	public byte addDoctor(String hospitalID,Doctor doctor) {
 		return this.doctorManager.addDoctor(hospitalID, doctor);
 	}
 	public byte deleteDoctor(String hospitalID, String name) {
 		return this.doctorManager.deleteDoctor(hospitalID,name);
 	}
-	public byte addRating(String id, String writer, String hospital, int scale, String content) {
-		return this.ratingManager.addRating(new Rating(id, writer, hospital, scale, content));
+	public byte addRating(String writer, String hospital, int scale, String content) {
+		return this.ratingManager.addRating(writer, hospital, scale, content);
 	}
+	
 }

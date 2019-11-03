@@ -3,6 +3,7 @@ package DB;
 import java.io.Serializable;
 
 public class RatingDTO implements Serializable {
+	// id = writer + "#" + hospital
 	private String id;
 	private String writer;
 	private String hospital;

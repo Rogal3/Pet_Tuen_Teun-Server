@@ -3,6 +3,9 @@ package manager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import DB.CommentDAO;
 import model.Comment;
 
 public class CommentManager {
@@ -10,42 +13,14 @@ public class CommentManager {
 	 * key=boardID
 	 */
 	private HashMap<String, ArrayList<Comment>> comments;
+	// TODO
+	//@Autowired
+	private CommentDAO commentDAO;
 	
 	public CommentManager() {
 		super();
-		this.comments=new HashMap<String,ArrayList<Comment>>();
-		
-		ArrayList<Comment> cmt=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ccc","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ddd","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("bbb","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		
-		ArrayList<Comment> cmt2=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ccc","�ㅋㅋㅋㅋㅋㅋㅋㅋ�","19/10/30"));
-		cmt.add(new Comment("bbb","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		
-		ArrayList<Comment> cmt3=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("bbb","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		
-		ArrayList<Comment> cmt4=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ccc","ㅋㅋㅋㅋㅋㅋㅋㅋ�","19/10/30"));
-		cmt.add(new Comment("ddd","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("bbb","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		
-		ArrayList<Comment> cm5=new ArrayList<Comment>();
-		cmt.add(new Comment("aaa","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ccc","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		cmt.add(new Comment("ddd","ㅋㅋㅋㅋㅋㅋㅋㅋ","19/10/30"));
-		
-		this.comments.put("f1",cmt);
-		this.comments.put("n2",cmt2);
-		this.comments.put("m3",cmt3);
-		this.comments.put("m1",cmt4);
-		this.comments.put("t1",cm5);
+		commentDAO = new CommentDAO();
+		this.comments=commentDAO.load();
 	}
 	public CommentManager(HashMap<String, ArrayList<Comment>> comments) {
 		super();

@@ -2,66 +2,59 @@ package manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import DB.ReservationDAO;
 import model.Member;
 import model.Reservation;
 
 @Service
 public class ReservationManager {
-	private ArrayList<Reservation> reservations;
+	private List<Reservation> reservations;
 	@Autowired
-	private MemberManager memberManager;//가입하지 않은 사람이 접근하는걸 막기위해서 필요,차후 회원이 고객인지 병원 회원인지 확인용
+	private MemberManager memberManager;//媛��엯�븯吏� �븡�� �궗�엺�씠 �젒洹쇳븯�뒗嫄� 留됯린�쐞�빐�꽌 �븘�슂,李⑦썑 �쉶�썝�씠 怨좉컼�씤吏� 蹂묒썝 �쉶�썝�씤吏� �솗�씤�슜
+	// TODO
+	//@Autowired
+	private ReservationDAO reservationDAO;
 	
 	private ReservationManager() {
 		super();
-		reservations=new ArrayList<Reservation>();
-		reservations.add(new Reservation("r001","ddd", "aaa", "예방접종","19/09/30",(byte)1));
-		reservations.add(new Reservation("r002","ddd", "aaa", "진단","19/10/13",(byte)1));
-		reservations.add(new Reservation("r003","ddd", "aaa", "진단","19/10/11",(byte)1));
-		reservations.add(new Reservation("r004","ddd", "aaa", "예방접종","19/10/14",(byte)1));	
-		
-		reservations.add(new Reservation("r004","ddd", "bbb", "예방접종","19/09/30",(byte)1));
-		reservations.add(new Reservation("r005","ddd", "bbb", "진단","19/10/10",(byte)1));
-		reservations.add(new Reservation("r006","ddd", "bbb", "진단","19/10/11",(byte)1));
-		
-		reservations.add(new Reservation("r007","ddd", "ccc", "예방접종","19/09/30",(byte)1));
-		reservations.add(new Reservation("r008","ddd", "ccc", "진단","19/10/10",(byte)1));
-		reservations.add(new Reservation("r009","ddd", "ccc", "진단","19/10/11",(byte)1));
-		reservations.add(new Reservation("r010","ddd", "ccc", "예방접종","19/10/14",(byte)1));		
+		reservationDAO = new ReservationDAO();
+		reservations = reservationDAO.load();
 	}
 	
 	public ReservationManager(ArrayList<Reservation> reservations) {
 		super();
 		this.reservations = reservations;
 	}
-	//해당하는 방번호 리턴(내부로직용이라고 생각해서 private 썻다.	
+	//�빐�떦�븯�뒗 諛⑸쾲�샇 由ы꽩(�궡遺�濡쒖쭅�슜�씠�씪怨� �깮媛곹빐�꽌 private �띀�떎.	
 	private int searchReservationIndexByID(String id) {
 		for(int i=0;i<reservations.size();i++)
 			if(reservations.get(i).getId().equals(id))
 				return i;
-		return -1;//없으면 -1
+		return -1;//�뾾�쑝硫� -1
 	}
-	//인덱스로 예약 찾는걸 함수로 만들어야하나?
+	//�씤�뜳�뒪濡� �삁�빟 李얜뒗嫄� �븿�닔濡� 留뚮뱾�뼱�빞�븯�굹?
 	public Reservation searchReservationByIndex(int index) {
 		if(index < 0 && index>=reservations.size())
-			return null;//오류 처리는 어케 하려나?
+			return null;//�삤瑜� 泥섎━�뒗 �뼱耳� �븯�젮�굹?
 		return reservations.get(index);
 	}
 	
 	public Reservation searchReservationByID(String id) {
 		int index=searchReservationIndexByID(id);
 		
-		return searchReservationByIndex(index);//없으면 null리턴
+		return searchReservationByIndex(index);//�뾾�쑝硫� null由ы꽩
 	}
 	
 	public ArrayList<Reservation> searchReservationsByCustomerID(String customerID){
 		ArrayList<Reservation> list=new ArrayList<Reservation>();
 		for(int i=0;i<reservations.size();i++) {
 			Reservation item=reservations.get(i);
-			if(item.getCutomerID().equals(customerID)) {
+			if(item.getCustomerID().equals(customerID)) {
 				list.add(item);
 			}
 		}
@@ -120,30 +113,30 @@ public class ReservationManager {
 	}
 	
 	public byte modifyReservation(String reserveID,String memberID,Reservation reservation) {
-		//예약 수정은 고객 회원만 가능
-		//존재하지 않는 회원일 경우
+		//�삁�빟 �닔�젙�� 怨좉컼 �쉶�썝留� 媛��뒫
+		//議댁옱�븯吏� �븡�뒗 �쉶�썝�씪 寃쎌슦
 		if(memberManager.searchMemberByID(memberID)==null)
 			return 0;
-		//수정할 예약
+		//�닔�젙�븷 �삁�빟
 		Reservation item=searchReservationByID(reserveID);
-		//존재하지 않는 예약일 경우
+		//議댁옱�븯吏� �븡�뒗 �삁�빟�씪 寃쎌슦
 		if(item == null)
 			return 0;
-		//회원과 예약이 관련 없을 경우
-		if(item.getHospitalID().equals(memberID) ==false || item.getCutomerID().equals(memberID) == false)
+		//�쉶�썝怨� �삁�빟�씠 愿��젴 �뾾�쓣 寃쎌슦
+		if(item.getHospitalID().equals(memberID) ==false || item.getCustomerID().equals(memberID) == false)
 			return 0;
-		//수정과정
+		//�닔�젙怨쇱젙
 		settingInfo(reserveID,reservation);
 		return 1;
 	}
-	//예약id,고객id,병원id는 수정이 불가능하다
+	//�삁�빟id,怨좉컼id,蹂묒썝id�뒗 �닔�젙�씠 遺덇��뒫�븯�떎
 	private byte settingInfo(String reserveID,Reservation reservation) {
 		Reservation item=searchReservationByID(reserveID);
-		//이런걸 이렇게 다 해야하나 ㅋㅋ 예외로 날리는게 맞는거같다.
-		//존재하지 않는 예약이라 세팅실패
+		//�씠�윴嫄� �씠�젃寃� �떎 �빐�빞�븯�굹 �뀑�뀑 �삁�쇅濡� �궇由щ뒗寃� 留욌뒗嫄곌컳�떎.
+		//議댁옱�븯吏� �븡�뒗 �삁�빟�씠�씪 �꽭�똿�떎�뙣
 		if(item ==null)
 			return 0;
-		//수정할 예약정보가 원래 예약이 맞는지 확인
+		//�닔�젙�븷 �삁�빟�젙蹂닿� �썝�옒 �삁�빟�씠 留욌뒗吏� �솗�씤
 		if(reservation.getId().equals(reserveID))
 			return 0;
 		
@@ -152,9 +145,9 @@ public class ReservationManager {
 		item.setReservationType(reservation.getReservationType());
 		return 1;
 	}
-	//그냥 덮어쓰기용 함수(유효성 검사 x)
+	//洹몃깷 �뜮�뼱�벐湲곗슜 �븿�닔(�쑀�슚�꽦 寃��궗 x)
 	private byte settingInfo(Reservation item,String type,String date,byte is) {
-		//존재해야 덮어쓴다.
+		//議댁옱�빐�빞 �뜮�뼱�벖�떎.
 		if(item ==null)
 			return 0;
 		
@@ -165,33 +158,42 @@ public class ReservationManager {
 	}
 	public byte modifyIsReservation(String reserveID,String memberID,String type,String date,byte is) {
 		Reservation item=searchReservationByID(reserveID);
-		//이런걸 이렇게 다 해야하나 ㅋㅋ 예외로 날리는게 맞는거같다.
+		//�씠�윴嫄� �씠�젃寃� �떎 �빐�빞�븯�굹 �뀑�뀑 �삁�쇅濡� �궇由щ뒗寃� 留욌뒗嫄곌컳�떎.
 		
 		return settingInfo(item,type,date,is);
 	}
+<<<<<<< HEAD
 	//삭제는 그 예약관 관련된 고객이나 병원 회원만 가능하다.
 	public byte deleteReservationByID(String reservationID,String memberID) {
+=======
+	//�궘�젣�뒗 洹� �삁�빟愿� 愿��젴�맂 怨좉컼�씠�굹 蹂묒썝 �쉶�썝留� 媛��뒫�븯�떎.
+	public byte delteReservationByID(String reservationID,String memberID) {
+>>>>>>> refs/remotes/origin/rogal3-fuck
 		Member member=memberManager.searchMemberByID(memberID);
-		//존재하지 않는 회원일 경우
+		//議댁옱�븯吏� �븡�뒗 �쉶�썝�씪 寃쎌슦
 		if(member==null)
 			return 0;
 		int index=searchReservationIndexByID(reservationID);
+<<<<<<< HEAD
 		//존재하지 않는 예약일 경우
 		System.out.println("index"+index);
+=======
+		//議댁옱�븯吏� �븡�뒗 �삁�빟�씪 寃쎌슦
+>>>>>>> refs/remotes/origin/rogal3-fuck
 		if(index < 0)
 			return 0;
 		Reservation item=searchReservationByIndex(index);
-		//예약과 관련이 있는 회원일 경우
-		if(item.getHospitalID().equals(memberID) || item.getCutomerID().equals(memberID)) {
+		//�삁�빟怨� 愿��젴�씠 �엳�뒗 �쉶�썝�씪 寃쎌슦
+		if(item.getHospitalID().equals(memberID) || item.getCustomerID().equals(memberID)) {
 			reservations.remove(index);
 			return 1;
 		}
-		//예약 실패한 경우
+		//�삁�빟 �떎�뙣�븳 寃쎌슦
 		return 0;
 	}
 	
 	public byte deleteReservationsBymemberID(String memberID,String type) {
-		//존재하지 회원인지 확인
+		//議댁옱�븯吏� �쉶�썝�씤吏� �솗�씤
 		if(memberManager.searchMemberByID(memberID) == null)
 			return 0;
 		
@@ -200,7 +202,7 @@ public class ReservationManager {
 			if("hospital".equals(type) && item.getHospitalID() == memberID) {
 				reservations.remove(i);
 			}
-			else if("customer".equals(type) && item.getCutomerID() == memberID) {
+			else if("customer".equals(type) && item.getCustomerID() == memberID) {
 				reservations.remove(i);
 			}
 			else;
@@ -210,8 +212,8 @@ public class ReservationManager {
 	}
 	
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
-		//유효성 검증하는거 - 병원id(병원은 비회원도 가능해서 조건검사 x),memberID 확인
-		//아이디가 부정할경우 예약이 불가능하다.
+		//�쑀�슚�꽦 寃�利앺븯�뒗嫄� - 蹂묒썝id(蹂묒썝�� 鍮꾪쉶�썝�룄 媛��뒫�빐�꽌 議곌굔寃��궗 x),memberID �솗�씤
+		//�븘�씠�뵒媛� 遺��젙�븷寃쎌슦 �삁�빟�씠 遺덇��뒫�븯�떎.
 		if(memberManager.searchMemberByID(memberID)==null)
 			return 0;
 		reservations.add(reservation);
