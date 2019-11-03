@@ -131,7 +131,11 @@ public class PostManager {
 		return 1;
 	}
 	public byte addBoard(Post board) {
-		if(searchById(board.getId())!=null)return 0;
+		ArrayList<Post> ary=this.boardTypeList.get(board.getType());
+		
+		String id=board.getType().charAt(0)+""+ary.size();
+		board.setBoardID(id);
+		
 		this.posts.put(board.getId(),board);
 		this.boardTypeList.get(board.getType()).add(board);
 		return 1;
