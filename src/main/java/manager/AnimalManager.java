@@ -69,6 +69,9 @@ this.animals=new HashMap<String,HashMap<String,Animal>>();
 		return 1;
 	}
 	public byte addAnimal(String id,Animal animal) {
+		if(this.animals.get(id)==null) {
+			this.animals.put(id,new HashMap<String,Animal>());
+		}
 		if(searchAnimal(id, animal.getName())!=null)return 0;
 		
 		if(this.animals.get(id)==null) {
