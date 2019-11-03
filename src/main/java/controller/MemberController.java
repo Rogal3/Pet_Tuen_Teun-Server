@@ -87,9 +87,8 @@ public class MemberController {
 			
 			attr.put("msg","ok");
 			
-			
-			
 			if("hospital".equals(session.getAttribute("type"))) {
+				
 				attr.put("name",memberService.searchByID(id).getName());
 				attr.put("address",memberService.searchByID(id).getAddress());
 				attr.put("openTime",hospitalService.searchHospitalByName(memberService.searchByID(id).getName()).getOpenTime());
@@ -99,15 +98,15 @@ public class MemberController {
 				
 				//중복이지만 우얄수없음
 				ArrayList<Reservation> reservations=hospitalService.searchReservation(id);
+				System.out.println("개수 : "+reservations.size());
 				for(int i=0;i<reservations.size();++i) {
 					JSONObject emp=new JSONObject();
 					Reservation item=reservations.get(i);
 					emp.put("id",item.getId());
-					String hospitalName=MemberManager.searchMemberByID(item.getHospitalID()).getName();
-					emp.put("type",this.memberService.searchAnimal(hospitalName).get(0).getSpecies());
+					emp.put("type",this.memberService.searchAnimal(item.getCutomerID()).get(0).getSpecies());
 					emp.put("time",hospitalService.searchReservation(id).get(i).getReservationDate());
 					emp.put("careType",hospitalService.searchReservation(id).get(i).getReservationType());
-					emp.put("name",this.memberService.searchAnimal(hospitalName).get(0).getName());
+					emp.put("name",this.memberService.searchAnimal(item.getCutomerID()).get(0).getName());
 					
 					ary.add(emp);
 				}
@@ -119,8 +118,7 @@ public class MemberController {
 				attr.put("species",memberService.searchAnimal(id).get(0).getSpecies());
 				
 				ary.add(attr);
-				
-				
+				System.out.println("id: "+id);
 				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
 					JSONObject emp=new JSONObject();
 					Reservation item=hospitalService.searchReservation(id).get(i);

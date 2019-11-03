@@ -14,29 +14,21 @@ public class ReservationManager {
 	private ArrayList<Reservation> reservations;
 	@Autowired
 	private MemberManager memberManager;//가입하지 않은 사람이 접근하는걸 막기위해서 필요,차후 회원이 고객인지 병원 회원인지 확인용
-	private static class LazyHolder{
-		public static final ReservationManager INSTANCE = new ReservationManager();
-	}
-	public static ReservationManager getInstance() {
-		return LazyHolder.INSTANCE;
-	}
 	
 	private ReservationManager() {
 		super();
-		ArrayList<Reservation> reserList=new ArrayList<Reservation>();
-		
-		reserList.add(new Reservation("r001","ddd", "aaa", "예방접종","19/09/30",(byte)1));
-		reserList.add(new Reservation("r002","ddd", "aaa", "진단","19/10/10",(byte)1));
-		reserList.add(new Reservation("r003","ddd", "aaa", "진단","19/10/11",(byte)1));
-		reserList.add(new Reservation("r004","ddd", "aaa", "예방접종","19/10/14",(byte)1));	
-		reserList.add(new Reservation("r004","ddd", "bbb", "예방접종","19/09/30",(byte)1));
-		reserList.add(new Reservation("r005","ddd", "bbb", "진단","19/10/10",(byte)1));
-		reserList.add(new Reservation("r006","ddd", "bbb", "진단","19/10/11",(byte)1));
-		reserList.add(new Reservation("r007","ddd", "ccc", "예방접종","19/09/30",(byte)1));
-		reserList.add(new Reservation("r008","ddd", "ccc", "진단","19/10/10",(byte)1));
-		reserList.add(new Reservation("r009","ddd", "ccc", "진단","19/10/11",(byte)1));
-		reserList.add(new Reservation("r010","ddd", "ccc", "예방접종","19/10/14",(byte)1));
-		
+		reservations=new ArrayList<Reservation>();
+		reservations.add(new Reservation("r001","ddd", "aaa", "예방접종","19/09/30",(byte)1));
+		reservations.add(new Reservation("r002","ddd", "aaa", "진단","19/10/10",(byte)1));
+		reservations.add(new Reservation("r003","ddd", "aaa", "진단","19/10/11",(byte)1));
+		reservations.add(new Reservation("r004","ddd", "aaa", "예방접종","19/10/14",(byte)1));	
+		reservations.add(new Reservation("r004","ddd", "bbb", "예방접종","19/09/30",(byte)1));
+		reservations.add(new Reservation("r005","ddd", "bbb", "진단","19/10/10",(byte)1));
+		reservations.add(new Reservation("r006","ddd", "bbb", "진단","19/10/11",(byte)1));
+		reservations.add(new Reservation("r007","ddd", "ccc", "예방접종","19/09/30",(byte)1));
+		reservations.add(new Reservation("r008","ddd", "ccc", "진단","19/10/10",(byte)1));
+		reservations.add(new Reservation("r009","ddd", "ccc", "진단","19/10/11",(byte)1));
+		reservations.add(new Reservation("r010","ddd", "ccc", "예방접종","19/10/14",(byte)1));		
 	}
 	
 	public ReservationManager(ArrayList<Reservation> reservations) {
@@ -65,9 +57,10 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByCustomerID(String customerID){
 		ArrayList<Reservation> list=new ArrayList<Reservation>();
+		System.out.println(reservations.size());
 		for(int i=0;i<reservations.size();i++) {
 			Reservation item=reservations.get(i);
-			if(item.getCutomerID()== customerID) {
+			if(item.getCutomerID().equals(customerID)) {
 				list.add(item);
 			}
 		}
@@ -78,7 +71,7 @@ public class ReservationManager {
 		ArrayList<Reservation> list=new ArrayList<Reservation>();
 		for(int i=0;i<reservations.size();i++) {
 			Reservation item=reservations.get(i);
-			if(item.getHospitalID()== hospitalID) {
+			if(item.getHospitalID().equals(hospitalID)) {
 				list.add(item);
 			}
 		}
@@ -87,6 +80,7 @@ public class ReservationManager {
 	
 	public ArrayList<Reservation> searchReservationsByMemberID(String memberID,String type){
 		ArrayList<Reservation> list=null;
+		System.out.println(type+"?"+memberID);
 		if("hospital".equals(type)) {
 			list=searchReservationsByHospitalID(memberID);
 		}
@@ -117,7 +111,7 @@ public class ReservationManager {
 		if(list != null)
 			for(int i=0;i<list.size();i++) {
 				Reservation item=list.get(i);
-				if(item.getReservationDate() != reservationDate) {
+				if(item.getReservationDate().equals(reservationDate) ==false) {
 					list.remove(i);
 				}
 			}
@@ -135,7 +129,7 @@ public class ReservationManager {
 		if(item == null)
 			return 0;
 		//회원과 예약이 관련 없을 경우
-		if(item.getHospitalID() != memberID || item.getCutomerID() != memberID)
+		if(item.getHospitalID().equals(memberID) ==false || item.getCutomerID().equals(memberID) == false)
 			return 0;
 		//수정과정
 		settingInfo(reserveID,reservation);
@@ -149,7 +143,7 @@ public class ReservationManager {
 		if(item ==null)
 			return 0;
 		//수정할 예약정보가 원래 예약이 맞는지 확인
-		if(reservation.getId() != reserveID)
+		if(reservation.getId().equals(reserveID))
 			return 0;
 		
 		item.setIsExecuted(reservation.getIsExecuted());
@@ -186,7 +180,7 @@ public class ReservationManager {
 			return 0;
 		Reservation item=searchReservationByIndex(index);
 		//예약과 관련이 있는 회원일 경우
-		if(item.getHospitalID() == memberID || item.getCutomerID() == memberID) {
+		if(item.getHospitalID().equals(memberID) || item.getCutomerID().equals(memberID)) {
 			reservations.remove(index);
 			return 1;
 		}
