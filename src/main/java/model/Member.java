@@ -76,6 +76,12 @@ public class Member {
 		this.name=name;
 		return 1;
 	}
+	public String getType() {
+		if(name.contains("병원") == true)
+			return "hospital";
+		else
+			return "customer";
+	}
 	public String get(String attribute, String data) {
 		switch(attribute) {
 			case "id":

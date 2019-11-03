@@ -17,6 +17,15 @@ public class HospitalController {
 	@Autowired
 	private HospitalService hospital;
 	
+	@RequestMapping(value="/cancel.do")
+	@ResponseBody//일단 이거 넣어야 string이나 json으로 전달되네
+	public String cancelReserve(@RequestParam("id")String id){
+		String result="";
+		System.out.println("id : "+id);
+		result="ok";
+		//삭제 로직을 넣어야한다.
+		return result;
+	}
 	@RequestMapping(value="/listView.do")
 	@ResponseBody
 	public JSONObject loadHome(HttpSession session,@RequestParam("id")String id,@RequestParam("password")String pwd) {

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import manager.MemberManager;
+import model.Reservation;
 import service.HospitalService;
 import service.MemberService;
 
@@ -23,6 +27,8 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private HospitalService hospitalService;
+	@Autowired
+	private MemberManager MemberManager;
 	
 	@RequestMapping(value="/login.do")
 	@ResponseBody
@@ -92,14 +98,16 @@ public class MemberController {
 				ary.add(attr);
 				
 				//중복이지만 우얄수없음
-				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
+				ArrayList<Reservation> reservations=hospitalService.searchReservation(id);
+				for(int i=0;i<reservations.size();++i) {
 					JSONObject emp=new JSONObject();
-					
-					emp.put("id",hospitalService.searchReservation(id).get(i).getHospitalName());
-					emp.put("type",this.memberService.searchAnimal(hospitalService.searchReservation(id).get(i).getHospitalName()).get(0).getSpecies());
+					Reservation item=reservations.get(i);
+					emp.put("id",item.getId());
+					String hospitalName=MemberManager.searchMemberByID(item.getHospitalID()).getName();
+					emp.put("type",this.memberService.searchAnimal(hospitalName).get(0).getSpecies());
 					emp.put("time",hospitalService.searchReservation(id).get(i).getReservationDate());
 					emp.put("careType",hospitalService.searchReservation(id).get(i).getReservationType());
-					emp.put("name",this.memberService.searchAnimal(hospitalService.searchReservation(id).get(i).getHospitalName()).get(0).getName());
+					emp.put("name",this.memberService.searchAnimal(hospitalName).get(0).getName());
 					
 					ary.add(emp);
 				}
@@ -115,8 +123,8 @@ public class MemberController {
 				
 				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
 					JSONObject emp=new JSONObject();
-					
-					emp.put("name",hospitalService.searchReservation(id).get(i).getHospitalName());
+					Reservation item=hospitalService.searchReservation(id).get(i);
+					emp.put("name",MemberManager.searchMemberByID(item.getHospitalID()).getName());
 					emp.put("subName",hospitalService.searchReservation(id).get(i).getReservationType());
 					emp.put("contents",hospitalService.searchReservation(id).get(i).getReservationDate());
 					

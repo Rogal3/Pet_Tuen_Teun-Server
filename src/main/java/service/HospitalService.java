@@ -2,10 +2,12 @@ package service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import manager.DoctorManager;
 import manager.HospitalManager;
+import manager.MemberManager;
 import manager.RatingManager;
 import manager.ReservationManager;
 import model.Doctor;
@@ -15,25 +17,34 @@ import model.Reservation;
 
 @Service
 public class HospitalService {
+	@Autowired
 	private HospitalManager hospitalManager;
+	@Autowired
 	private ReservationManager reservationManager;
+	@Autowired
 	private DoctorManager doctorManager;
+	@Autowired
 	private RatingManager ratingManager;
-	
+	@Autowired
+	private MemberManager memberManager;
 	public HospitalService() {
 		super();
-		this.hospitalManager=new HospitalManager();
-		this.reservationManager=new ReservationManager();
-		this.doctorManager=new DoctorManager();
-		this.ratingManager=new RatingManager();
 	}
 	public HospitalService(HospitalManager hospitalManager, ReservationManager reservationManager,
-			DoctorManager doctorManager, RatingManager ratingManager) {
+			DoctorManager doctorManager, RatingManager ratingManager, MemberManager memberManager) {
 		super();
 		this.hospitalManager = hospitalManager;
 		this.reservationManager = reservationManager;
 		this.doctorManager = doctorManager;
 		this.ratingManager = ratingManager;
+		this.memberManager=memberManager;
+	}
+	
+	public MemberManager getMemberManager() {
+		return memberManager;
+	}
+	public void setMemberManager(MemberManager memberManager) {
+		this.memberManager = memberManager;
 	}
 	public HospitalManager getHospitalManager() {
 		return hospitalManager;
@@ -62,8 +73,9 @@ public class HospitalService {
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
 		return this.reservationManager.addReservation(hospitalID, memberID, reservation);
 	}
-	public byte deleteReservation(String hospitalID,String memberID,String hospitalName) {
-		return this.reservationManager.deleteReservation(hospitalID, memberID,hospitalName);
+	public byte deleteReservation(String reserveID,String memberID) {
+		String type=memberManager.searchMemberByID(memberID).getType();
+		return this.reservationManager.deleteReservationsBymemberID(memberID, type);
 	}
 	public byte addHospital(Hospital hospital) {
 		return this.hospitalManager.addHospital(hospital);
@@ -73,8 +85,8 @@ public class HospitalService {
 	}
 	
 	public ArrayList<Reservation> searchReservation(String memberID){
-		
-		return this.reservationManager.searchReservations(memberID);
+		String type=memberManager.searchMemberByID(memberID).getType();
+		return this.reservationManager.searchReservationsByMemberID(memberID, type);
 	}
 	public Hospital searchHospitalByName(String hospitalName) {
 		return this.hospitalManager.searchHospital(hospitalName);

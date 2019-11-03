@@ -1,35 +1,44 @@
 package model;
 
 public class Reservation {
-	private String hospitalName;
-	private String memberID;
+	//id가 필요하다.
+	private String id;
+	private String hospitalID;
+	private String cutomerID;
 	private String reservationType;
 	private String reservationDate;
 	private byte isExecuted;
-	
+	 
 	public Reservation() {
 		super();
 	}
-	public Reservation(String hospitalName, String memberID, String reservationType, String reservationDate,
+	public Reservation(String id,String hospitalID, String cutomerID, String reservationType, String reservationDate,
 			byte isExecuted) {
 		super();
-		this.hospitalName = hospitalName;
-		this.memberID = memberID;
+		this.id=id;
+		this.hospitalID = hospitalID;
+		this.cutomerID = cutomerID;
 		this.reservationType = reservationType;
 		this.reservationDate = reservationDate;
 		this.isExecuted = isExecuted;
 	}
-	public String getHospitalName() {
-		return hospitalName;
+	public String getId() {
+		return id;
 	}
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getMemberID() {
-		return memberID;
+	public String getHospitalID() {
+		return hospitalID;
 	}
-	public void setMemberID(String memberID) {
-		this.memberID = memberID;
+	public void setHospitalID(String hospitalID) {
+		this.hospitalID = hospitalID;
+	}
+	public String getCutomerID() {
+		return cutomerID;
+	}
+	public void setCutomerID(String cutomerID) {
+		this.cutomerID = cutomerID;
 	}
 	public String getReservationType() {
 		return reservationType;
@@ -48,18 +57,6 @@ public class Reservation {
 	}
 	public void setIsExecuted(byte isExecuted) {
 		this.isExecuted = isExecuted;
-	}
-	public byte modifyExecution(byte execution) {
-		this.isExecuted=execution;
-		return 1;
-	}
-	public byte modifyReservationDate(String day) {
-		this.reservationDate=day;
-		return 1;
-	}
-	public byte modifyReservationType(String type) {
-		this.reservationType=type;
-		return 1;
 	}
 	
 }
