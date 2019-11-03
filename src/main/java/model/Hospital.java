@@ -1,7 +1,7 @@
 package model;
 
 public class Hospital {
-	private String name;
+	private String name;//id
 	private String address;
 	private String phoneNum;
 	private String openTime;
