@@ -10,7 +10,7 @@ import model.Comment;
 
 public class CommentManager {
 	/**
-	 * key=boardID
+	 * key=postID
 	 */
 	private HashMap<String, ArrayList<Comment>> comments;
 	// TODO
@@ -32,14 +32,14 @@ public class CommentManager {
 	public void setComments(HashMap<String, ArrayList<Comment>> comments) {
 		this.comments = comments;
 	}
-	public ArrayList<Comment> searchCommentList(String boardID){
-		return this.comments.get(boardID);
+	public ArrayList<Comment> searchCommentList(String postID){
+		return this.comments.get(postID);
 	}
-	public byte modifyComment(String boardID,Comment comment) {
-		if(searchCommentList(boardID)==null)return 0;
+	public byte modifyComment(String postID,Comment comment) {
+		if(searchCommentList(postID)==null)return 0;
 		int i=0;
 		
-		ArrayList<Comment> list=this.comments.get(boardID);
+		ArrayList<Comment> list=this.comments.get(postID);
 		for(int j=0;j<list.size();++j) {
 			if(list.get(j).getWriteTime().equals(comment.getWriteTime())) {
 				i=j;
@@ -52,10 +52,10 @@ public class CommentManager {
 		return 1;
 	}
 	
-	public byte deleteComment(String boardID,String writeTime) {
-		if(searchCommentList(boardID)==null)return 0;
+	public byte deleteComment(String postID,String writeTime) {
+		if(searchCommentList(postID)==null)return 0;
 		
-		ArrayList<Comment> list=this.comments.get(boardID);
+		ArrayList<Comment> list=this.comments.get(postID);
 		for(int j=0;j<list.size();++j) {
 			if(list.get(j).getWriteTime().equals(writeTime)) {
 			
@@ -66,10 +66,10 @@ public class CommentManager {
 		
 		return 1;
 	}
-	public byte addComment(String boardID,Comment comment) {
-		if(searchCommentList(boardID)!=null)return 0;
+	public byte addComment(String postID,Comment comment) {
+		if(searchCommentList(postID)!=null)return 0;
 		
-		this.comments.get(boardID).add(comment);
+		this.comments.get(postID).add(comment);
 		return 1;
 	}
 }
