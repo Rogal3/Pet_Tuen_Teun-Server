@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Animal;
+import model.Hospital;
 import model.Member;
 import model.Reservation;
 import service.HospitalService;
@@ -142,16 +143,32 @@ public class exController {
 	}
 	@RequestMapping(value="/userCancel.do")
 	@ResponseBody
-	public String userCancel(@RequestParam("reserveName")String name,@RequestParam("memberID")String id) {
+	public String userCancel(@RequestParam("removeID")String removeid,@RequestParam("memberID")String id) {
 		
 		int result;
-		String hosid=memberService.searchByName(name).get(0).getId();
-		System.out.println("입력된 병원"+hosid);
-		result=this.hospitalService.deleteReservationVer2(hosid,id);	
+		System.out.println(removeid);
+		result=this.hospitalService.deleteReservationVer2(removeid,id);	
 		System.out.println(result);
 		if(result == 1)
 			return "ok";
 		else
 			return "false";
 	}
+	@RequestMapping(value="/joinHos.do")
+	@ResponseBody
+	public JSONObject joinHos(@RequestParam("id")String id,@RequestParam("password")String password,
+			@RequestParam("name")String name,@RequestParam("phoneNum")String phoneNum) {
+		
+		JSONObject attr=new JSONObject();
+		
+		byte j=this.memberService.join(id, password, name,"", phoneNum);
+		this.hospitalService.addHospital(new Hospital(name, "", phoneNum, "09:00-09:00", "09:00-09:00"));
+		if(j==1) {
+			attr.put("msg","ok");
+		}else {
+			attr.put("msg","no");
+		}
+		return attr;
+	}
+	
 }

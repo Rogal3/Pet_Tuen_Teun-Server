@@ -72,7 +72,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/mainView.do")
 	@ResponseBody
-	public JSONArray loadMain(HttpSession session) {
+	public JSONArray loadMain(HttpSession session,@RequestParam("id")String memid) {
 		
 		JSONObject attr=new JSONObject();
 		JSONArray ary=new JSONArray();
@@ -80,10 +80,11 @@ public class MemberController {
 		System.out.println("넘어온 쿠키 id = "+session.getId());
 		
 		ServletContext context=session.getServletContext();
-		
+		String id=this.MemberManager.searchMemberByID(memid).getId();
+		System.out.println("로그인 아이디 : "+id);
 		//로그인된 아이디를 저장.
-		if(session.getAttribute("id")!=null) {
-			String id=(String)session.getAttribute("id");
+		if(id!=null) {
+			//String id=(String)session.getAttribute("id");
 			
 			attr.put("msg","ok");
 			
@@ -111,6 +112,7 @@ public class MemberController {
 				}
 			
 			}else {
+				
 				attr.put("petName",memberService.searchAnimal(id).get(0).getName());
 				attr.put("adopt",memberService.searchAnimal(id).get(0).getAdopt());
 				attr.put("birth",memberService.searchAnimal(id).get(0).getBirth());
@@ -121,6 +123,8 @@ public class MemberController {
 				for(int i=0;i<hospitalService.searchReservation(id).size();++i) {
 					JSONObject emp=new JSONObject();
 					Reservation item=hospitalService.searchReservation(id).get(i);
+					System.out.println(item.getId());
+					emp.put("id",item.getId());
 					emp.put("name",MemberManager.searchMemberByID(item.getHospitalID()).getName());
 					emp.put("subName",hospitalService.searchReservation(id).get(i).getReservationType());
 					emp.put("contents",hospitalService.searchReservation(id).get(i).getReservationDate());
