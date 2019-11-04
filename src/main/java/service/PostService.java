@@ -66,7 +66,7 @@ public class PostService {
 	}
 	
 	public byte modifyBoard(String id,Post board) {
-		return this.PostManager.addBoard(board);
+		return this.PostManager.addPost(board);
 	}
 	
 	public byte deleteBoard(String id) {
@@ -74,7 +74,7 @@ public class PostService {
 	}
 	
 	public byte addBoard(Post post) {
-		return this.PostManager.addBoard(post);
+		return this.PostManager.addPost(post);
 	}
 	
 	public byte addComment(String boardID,Comment comment) {

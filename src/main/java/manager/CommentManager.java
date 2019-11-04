@@ -2,6 +2,7 @@ package manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +11,7 @@ import model.Comment;
 
 public class CommentManager {
 	/**
-	 * key=postID
+	 * key=PostID
 	 */
 	private HashMap<String, ArrayList<Comment>> comments;
 	// TODO
@@ -34,6 +35,12 @@ public class CommentManager {
 	}
 	public ArrayList<Comment> searchCommentList(String postID){
 		return this.comments.get(postID);
+	}
+
+	public Comment get(String postId, String num) {
+		int idx = Integer.parseInt(num);
+		Comment comment = comments.get(postId).get(idx);
+		return comment;
 	}
 	public byte modifyComment(String postID,Comment comment) {
 		if(searchCommentList(postID)==null)return 0;
@@ -66,6 +73,18 @@ public class CommentManager {
 		
 		return 1;
 	}
+	
+	public byte addComment(String postId, String writer, String content, String writeTime) {
+		ArrayList<Comment> list = comments.get(postId);
+		if (list == null) {
+			list = new ArrayList<Comment>();
+			comments.put(postId, list);
+		}
+		Comment comment = new Comment(writer, content, writeTime);
+		list.add(comment);
+		return 1;
+	}
+	
 	public byte addComment(String postID,Comment comment) {
 		if(searchCommentList(postID)!=null)return 0;
 		

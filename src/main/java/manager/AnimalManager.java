@@ -51,9 +51,9 @@ public class AnimalManager {
 		
 		return animal;
 	}
-	public byte modifyAnimal(String id,Animal animal) {
-		if(searchAnimal(id, animal.getName())==null)return 0;
-		
+	public byte modifyAnimal(String id,String pastName,Animal animal) {
+		if(searchAnimal(id, pastName)==null)return 0;
+		this.animals.get(id).remove(pastName);
 		this.animals.get(id).put(animal.getName(), animal);
 		return 1;
 	}

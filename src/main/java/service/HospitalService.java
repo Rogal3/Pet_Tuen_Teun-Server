@@ -77,6 +77,9 @@ public class HospitalService {
 		String type=memberManager.searchMemberByID(memberID).getType();
 		return this.reservationManager.deleteReservationsBymemberID(memberID, type);
 	}
+	public byte deleteReservationVer2(String reservationID,String memberID) {
+		return reservationManager.deleteReservationByID(reservationID, memberID);
+	}
 	public byte addHospital(Hospital hospital) {
 		return this.hospitalManager.addHospital(hospital);
 	}
