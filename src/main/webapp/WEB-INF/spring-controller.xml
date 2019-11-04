@@ -16,8 +16,10 @@
 	
 	<bean id="memberManager" class="manager.MemberManager"></bean>
 	<bean id="hospitalManager" class="manager.HospitalManager"></bean>
-	<bean id="ratingManager" class="manager.RatingManager"></bean>
-	<bean id="doctorManager" class="manager.DoctorManager"></bean>
-	<bean id="reservationManager" class="manager.ReservationManager"></bean>
-	
+
+	<bean id="RatingManager" class="manager.RatingManager"></bean>
+	<bean id="DoctorManager" class="manager.DoctorManager"></bean>
+	<bean id="ReservationManager" class="manager.ReservationManager"></bean>
+	<bean id="AnimalManager" class="manager.AnimalManager"></bean>
+
 </beans>

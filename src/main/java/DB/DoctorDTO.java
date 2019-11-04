@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class DoctorDTO implements Serializable {
 	private String name;
+	private String hospital;
 	private String position;
 	private String major;
 	
@@ -11,9 +12,10 @@ public class DoctorDTO implements Serializable {
 		super();
 	}
 
-	public DoctorDTO(String name, String position, String major) {
+	public DoctorDTO(String name, String hospital, String position, String major) {
 		super();
 		this.name = name;
+		this.hospital = hospital;
 		this.position = position;
 		this.major = major;
 	}
@@ -24,6 +26,14 @@ public class DoctorDTO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
 	}
 
 	public String getPosition() {
@@ -44,7 +54,9 @@ public class DoctorDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DoctorDTO [name=" + name + ", position=" + position + ", major=" + major + "]";
+		return "DoctorDTO [name=" + name + ", hospital=" + hospital + ", position=" + position + ", major=" + major
+				+ "]";
 	}
+
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import manager.AnimalManager;
@@ -13,8 +14,9 @@ import model.Member;
 
 @Service
 public class MemberService {
-
+	@Autowired
 	private MemberManager memberManager;
+	@Autowired
 	private AnimalManager animalManager;
 	
 	

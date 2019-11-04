@@ -102,10 +102,10 @@ public class MemberController {
 					JSONObject emp=new JSONObject();
 					Reservation item=reservations.get(i);
 					emp.put("id",item.getId());
-					emp.put("type",this.memberService.searchAnimal(item.getCutomerID()).get(0).getSpecies());
+					emp.put("type",this.memberService.searchAnimal(item.getCustomerID()).get(0).getSpecies());
 					emp.put("time",hospitalService.searchReservation(id).get(i).getReservationDate());
 					emp.put("careType",hospitalService.searchReservation(id).get(i).getReservationType());
-					emp.put("name",this.memberService.searchAnimal(item.getCutomerID()).get(0).getName());
+					emp.put("name",this.memberService.searchAnimal(item.getCustomerID()).get(0).getName());
 					
 					ary.add(emp);
 				}

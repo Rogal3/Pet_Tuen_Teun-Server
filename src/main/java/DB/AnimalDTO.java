@@ -1,8 +1,12 @@
 package DB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnimalDTO implements Serializable {
+	private String id;
+	private String owner;
 	private String name;
 	private String species;
 	private int age;
@@ -12,17 +16,38 @@ public class AnimalDTO implements Serializable {
 	public AnimalDTO() {
 		super();
 	}
-	public AnimalDTO(String name, String species, int age, String adopt, String birth) {
+	
+	public AnimalDTO(String id, String owner, String name, String species, int age, String adopt, String birth) {
 		super();
+		this.id = id;
+		this.owner = owner;
 		this.name = name;
 		this.species = species;
 		this.age = age;
 		this.adopt = adopt;
 		this.birth = birth;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -50,8 +75,42 @@ public class AnimalDTO implements Serializable {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+
 	@Override
 	public String toString() {
-		return "AnimalDTO [name=" + name + ", species=" + species + ", age=" + age + ", adopt=" + adopt + ", birth=" + birth + "]";
+		return "AnimalDTO [id=" + id + ", owner=" + owner + ", name=" + name + ", species=" + species + ", age=" + age
+				+ ", adopt=" + adopt + ", birth=" + birth + "]";
 	}
+	
+//	public List<String> getAttributes() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("id");
+//		list.add("owner");
+//		list.add("name");
+//		list.add("species");
+//		list.add("age");
+//		list.add("adopt");
+//		list.add("birth");
+//		return list;
+//	}
+//	public String getAttribute(String attribute) {
+//		switch (attribute) {
+//		case "id":
+//			return getId();
+//		case "owner":
+//			return getOwner();
+//		case "name":
+//			return getName();
+//		case "species":
+//			return getSpecies();
+//		case "age":
+//			return Integer.toString(getAge());
+//		case "adopt":
+//			return getAdopt();
+//		case "birth":
+//			return getBirth();
+//		default:
+//			return null;
+//		}
+//	}
 }

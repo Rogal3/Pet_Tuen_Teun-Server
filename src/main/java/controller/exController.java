@@ -24,6 +24,7 @@ public class exController {
 	private MemberService memberService;
 	@Autowired
 	private HospitalService hospitalService;
+
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String loadHome(Model m) {
 		m.addAttribute("name","here?");
@@ -82,6 +83,7 @@ public class exController {
 		byte a=this.memberService.addAnimal(id, petName, petBirth, adoptDay, species, petAge);
 		
 		if(j==1) {
+			System.out.println("조인은 완료");
 			attr.put("msg","ok");
 			if(a==1) {
 				attr.put("petMsg","ok");

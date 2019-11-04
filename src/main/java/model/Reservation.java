@@ -1,23 +1,23 @@
 package model;
 
 public class Reservation {
-	//id가 필요하다.
+	//id媛� �븘�슂�븯�떎.
 	private String id;
 	private String hospitalID;
 	private String customerID;
 	private String reservationType;
 	private String reservationDate;
 	private byte isExecuted;
-	 
+	
 	public Reservation() {
 		super();
 	}
-	public Reservation(String id,String hospitalID, String cutomerID, String reservationType, String reservationDate,
+	public Reservation(String id,String hospitalID, String customerID, String reservationType, String reservationDate,
 			byte isExecuted) {
 		super();
 		this.id=id;
 		this.hospitalID = hospitalID;
-		this.customerID = cutomerID;
+		this.customerID = customerID;
 		this.reservationType = reservationType;
 		this.reservationDate = reservationDate;
 		this.isExecuted = isExecuted;
@@ -34,11 +34,11 @@ public class Reservation {
 	public void setHospitalID(String hospitalID) {
 		this.hospitalID = hospitalID;
 	}
-	public String getCutomerID() {
+	public String getCustomerID() {
 		return customerID;
 	}
-	public void setCutomerID(String cutomerID) {
-		this.customerID = cutomerID;
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
 	}
 	public String getReservationType() {
 		return reservationType;

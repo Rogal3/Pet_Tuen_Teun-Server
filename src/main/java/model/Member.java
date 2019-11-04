@@ -82,20 +82,10 @@ public class Member {
 		else
 			return "customer";
 	}
-	public String get(String attribute, String data) {
-		switch(attribute) {
-			case "id":
-				return getId();
-			case "password":
-				return getPassword();
-			case "name":
-				return getName();
-			case "address":
-				return getAddress();
-			case "phoneNum":
-				return getPhoneNum();
-			default:
-				return null;
-		}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address + ", phoneNum="
+				+ phoneNum + "]";
 	}
 }

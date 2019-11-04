@@ -4,17 +4,15 @@ public class Doctor {
 	private String name;
 	private String position;
 	private String major;
-	private String workingTime;
 	
 	public Doctor() {
 		super();
 	}
-	public Doctor(String name, String position, String major, String workingTime) {
+	public Doctor(String name, String position, String major) {
 		super();
 		this.name = name;
 		this.position = position;
 		this.major = major;
-		this.workingTime = workingTime;
 	}
 	public String getName() {
 		return name;
@@ -33,16 +31,6 @@ public class Doctor {
 	}
 	public void setMajor(String major) {
 		this.major = major;
-	}
-	public String getWorkingTime() {
-		return workingTime;
-	}
-	public void setWorkingTime(String workingTime) {
-		this.workingTime = workingTime;
-	}
-	public byte modifyWorkingTime(String workingTime) {
-		this.workingTime=workingTime;
-		return 1;
 	}
 	public byte modifyPosition(String position) {
 		this.position=position;

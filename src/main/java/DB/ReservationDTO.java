@@ -3,58 +3,82 @@ package DB;
 import java.io.Serializable;
 
 public class ReservationDTO implements Serializable {
-	private String hospitalName;
-	private String memberID;
+	private String id;
+	private String hospitalMemberID;
+	private String customerID;
 	private String reservationType;
 	private String reservationDate;
-	private byte isExecuted;
+	private int isExecuted;
 	
 	public ReservationDTO() {
 		super();
 	}
-	public ReservationDTO(String hospitalName, String memberID, String reservationType, String reservationDate,
-			byte isExecuted) {
+
+	public ReservationDTO(String id, String hospitalMemberID, String customerID, String reservationType,
+			String reservationDate, int isExecuted) {
 		super();
-		this.hospitalName = hospitalName;
-		this.memberID = memberID;
+		this.id = id;
+		this.hospitalMemberID = hospitalMemberID;
+		this.customerID = customerID;
 		this.reservationType = reservationType;
 		this.reservationDate = reservationDate;
 		this.isExecuted = isExecuted;
 	}
-	public String getHospitalName() {
-		return hospitalName;
+
+	public String getId() {
+		return id;
 	}
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getMemberID() {
-		return memberID;
+
+	public String gethospitalMemberID() {
+		return hospitalMemberID;
 	}
-	public void setMemberID(String memberID) {
-		this.memberID = memberID;
+
+	public void sethospitalMemberID(String hospitalMemberID) {
+		this.hospitalMemberID = hospitalMemberID;
 	}
+
+	public String getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
+	}
+
 	public String getReservationType() {
 		return reservationType;
 	}
+
 	public void setReservationType(String reservationType) {
 		this.reservationType = reservationType;
 	}
+
 	public String getReservationDate() {
 		return reservationDate;
 	}
+
 	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
-	public byte getIsExecuted() {
+
+	public int getIsExecuted() {
 		return isExecuted;
 	}
-	public void setIsExecuted(byte isExecuted) {
+
+	public void setIsExecuted(int isExecuted) {
 		this.isExecuted = isExecuted;
 	}
+
 	@Override
 	public String toString() {
-		return "ReservationDTO [hospitalName=" + hospitalName + ", memberID=" + memberID + ", reservationType="
-				+ reservationType + ", reservationDate=" + reservationDate + ", isExecuted=" + isExecuted + "]";
+		return "ReservationDTO [id=" + id + ", hospitalMemberID=" + hospitalMemberID + ", customerID=" + customerID
+				+ ", reservationType=" + reservationType + ", reservationDate=" + reservationDate + ", isExecuted="
+				+ isExecuted + "]";
 	}
 
+	
 }

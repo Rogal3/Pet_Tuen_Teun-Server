@@ -6,19 +6,19 @@ public class Post {
 	private String title;
 	private String writer;
 	private String content;
-	private String wirteTime;
+	private String writeTime;
 	
 	public Post() {
 		super();
 	}
-	public Post(String id, String type, String title, String writer, String content, String wirteTime) {
+	public Post(String id, String type, String title, String writer, String content, String writeTime) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
-		this.wirteTime = wirteTime;
+		this.writeTime = writeTime;
 	}
 	public String getId() {
 		return id;
@@ -50,11 +50,11 @@ public class Post {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWirteTime() {
-		return wirteTime;
+	public String getWriteTime() {
+		return writeTime;
 	}
-	public void setWirteTime(String wirteTime) {
-		this.wirteTime = wirteTime;
+	public void setWriteTime(String writeTime) {
+		this.writeTime = writeTime;
 	}
 	public byte modifyType(String type) {
 		this.type=type;
@@ -69,7 +69,12 @@ public class Post {
 		return 1;
 	}
 	public byte modifyWriteTime(String time) {
-		this.wirteTime=time;
+		this.writeTime=time;
 		return 1;
+	}
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", type=" + type + ", title=" + title + ", writer=" + writer + ", content=" + content
+				+ ", writeTime=" + writeTime + "]";
 	}
 }
