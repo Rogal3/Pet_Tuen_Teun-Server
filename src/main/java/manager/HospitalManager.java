@@ -23,12 +23,12 @@ public class HospitalManager {
 	public HospitalManager() {
 		super();
 		hospitalDAO = new HospitalDAO();
-		// TODO : remove comment
-		//this.hospitals=hospitalDAO.load();
+		this.hospitals=hospitalDAO.load();
 	}
 	public HospitalManager(HashMap<String, Hospital> hospital) {
 		super();
 		this.hospitals = hospital;
+		this.hospitalDAO = new HospitalDAO();
 	}
 	public HashMap<String, Hospital> getHospital() {
 		return hospitals;
