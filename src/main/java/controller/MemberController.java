@@ -94,9 +94,7 @@ public class MemberController {
 				attr.put("address",memberService.searchByID(id).getAddress());
 				attr.put("openTime",hospitalService.searchHospitalByName(memberService.searchByID(id).getName()).getOpenTime());
 				attr.put("closeTime",hospitalService.searchHospitalByName(memberService.searchByID(id).getName()).getOpenTime());
-				
 				ary.add(attr);
-				
 				//중복이지만 우얄수없음
 				ArrayList<Reservation> reservations=hospitalService.searchReservation(id);
 				for(int i=0;i<reservations.size();++i) {
