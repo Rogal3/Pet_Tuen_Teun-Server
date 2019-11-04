@@ -24,7 +24,7 @@ public class ReservationDAO extends DAO {
 			while (rs.next()) {
 				Reservation reservation = new Reservation(
 						rs.getString("id"),
-						rs.getString("hospitalID"),
+						rs.getString("hospitalMemberID"),
 						rs.getString("customerID"),
 						rs.getString("reservationType"),
 						rs.getString("reservationTime"),

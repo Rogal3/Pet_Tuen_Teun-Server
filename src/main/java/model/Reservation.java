@@ -8,7 +8,7 @@ public class Reservation {
 	private String reservationType;
 	private String reservationDate;
 	private byte isExecuted;
-	 
+	
 	public Reservation() {
 		super();
 	}
