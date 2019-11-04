@@ -4,7 +4,7 @@ public class Reservation {
 	//id가 필요하다.
 	private String id;
 	private String hospitalID;
-	private String cutomerID;
+	private String customerID;
 	private String reservationType;
 	private String reservationDate;
 	private byte isExecuted;
@@ -17,7 +17,7 @@ public class Reservation {
 		super();
 		this.id=id;
 		this.hospitalID = hospitalID;
-		this.cutomerID = cutomerID;
+		this.customerID = cutomerID;
 		this.reservationType = reservationType;
 		this.reservationDate = reservationDate;
 		this.isExecuted = isExecuted;
@@ -35,10 +35,10 @@ public class Reservation {
 		this.hospitalID = hospitalID;
 	}
 	public String getCutomerID() {
-		return cutomerID;
+		return customerID;
 	}
 	public void setCutomerID(String cutomerID) {
-		this.cutomerID = cutomerID;
+		this.customerID = cutomerID;
 	}
 	public String getReservationType() {
 		return reservationType;

@@ -30,7 +30,7 @@ public class ReservationManager {
 		reservations.add(new Reservation("r007","ddd", "ccc", "예방접종","19/09/30",(byte)1));
 		reservations.add(new Reservation("r008","ddd", "ccc", "진단","19/10/10",(byte)1));
 		reservations.add(new Reservation("r009","ddd", "ccc", "진단","19/10/11",(byte)1));
-		reservations.add(new Reservation("r010","ddd", "ccc", "예방접종","19/10/14",(byte)1));		
+		reservations.add(new Reservation("r010","ddd", "ccc", "예방접종","19/10/14",(byte)1));
 	}
 	
 	public ReservationManager(ArrayList<Reservation> reservations) {
@@ -209,6 +209,16 @@ public class ReservationManager {
 		return 1;
 	}
 	
+	public byte addReservation(String hospitalID,String customerID,String reservationType,String reservationDate) {
+		//마지막 id 가져와야한다.
+		String id=reservations.get(reservations.size()-1).getId();
+		int number=Integer.parseInt(id.substring(1))+1;
+		String newID=String.format("r%03d",number);
+		//실행된 예약이 아니니 당연히 디폴트로 0 설정
+		Reservation item=new Reservation(newID,hospitalID,customerID,reservationType,reservationDate,(byte)0);
+		reservations.add(item);
+		return 1;
+	}
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
 		//유효성 검증하는거 - 병원id(병원은 비회원도 가능해서 조건검사 x),memberID 확인
 		//아이디가 부정할경우 예약이 불가능하다.

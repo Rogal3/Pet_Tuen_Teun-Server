@@ -12,4 +12,7 @@ public class ReservationService {
 	public byte deleteReservation(String reservationID,String memberID) {
 		return reservationManager.deleteReservationByID(reservationID, memberID);
 	}
+	public byte addReservation(String hospitalID,String customerID,String reservationType,String reservationDate) {
+		return reservationManager.addReservation(hospitalID, customerID, reservationType, reservationDate);
+	}
 }
