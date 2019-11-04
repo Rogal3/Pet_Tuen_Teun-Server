@@ -82,8 +82,8 @@ public class MemberService {
 	public ArrayList<Animal> searchAnimal(String id){
 		return this.animalManager.searchAnimalByID(id);
 	}
-	public byte modifyAnimal(String id,Animal animal) {
-		return this.animalManager.modifyAnimal(id, animal);
+	public byte modifyAnimal(String id,String pastName,Animal animal) {
+		return this.animalManager.modifyAnimal(id,pastName, animal);
 	}
 	public int calcuDday(String id, String name) {
 		String birth=searchAnimal(id,name).getBirth();

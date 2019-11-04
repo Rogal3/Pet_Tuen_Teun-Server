@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import model.Animal;
 import model.Member;
+import model.Reservation;
 import service.HospitalService;
 import service.MemberService;
 
@@ -96,5 +98,61 @@ public class exController {
 		}
 		
 		return attr;
+	}
+	
+	@RequestMapping(value="/addReserve.do")
+	@ResponseBody
+	public JSONObject reserveAdd(@RequestParam("id")String id,@RequestParam("hospitalName")String hospitalName,
+			@RequestParam("reserveInfo")String reserveInfo,@RequestParam("reserveTime")String reserveTime) {
+		
+		System.out.println(id);
+		JSONObject attr=new JSONObject();
+		
+		if(this.memberService.searchByID(id)!=null) {
+			attr.put("msg","ok");
+			String hospitalID=this.memberService.searchByName(hospitalName).get(0).getId();
+			hospitalService.addReservation(hospitalID, id, new Reservation(hospitalID, hospitalID, id, reserveInfo, reserveTime, (byte)0));
+		}else {
+			attr.put("msg","no");
+		}
+		
+	
+		
+		return attr;
+	}
+	@RequestMapping(value="/petModify.do")
+	@ResponseBody
+	public JSONObject petModify(@RequestParam("id")String id,@RequestParam("pet_name")String petName,
+			@RequestParam("pet_birth")String petBirth,@RequestParam("adopt_day")String adoptDay,@RequestParam("pet_age")String petAge
+			,@RequestParam("species")String species) {
+		
+		System.out.println(id);
+		JSONObject attr=new JSONObject();
+		
+		if(this.memberService.searchByID(id)!=null) {
+			attr.put("msg","ok");
+			byte a=memberService.modifyAnimal(id,this.memberService.searchAnimal(id).get(0).getName(), new Animal(petName, species, Integer.parseInt(petAge), adoptDay, petBirth));
+			System.out.println(a);
+		}else {
+			attr.put("msg","no");
+		}
+		
+	
+		
+		return attr;
+	}
+	@RequestMapping(value="/userCancel.do")
+	@ResponseBody
+	public String userCancel(@RequestParam("reserveName")String name,@RequestParam("memberID")String id) {
+		
+		int result;
+		String hosid=memberService.searchByName(name).get(0).getId();
+		System.out.println("입력된 병원"+hosid);
+		result=this.hospitalService.deleteReservationVer2(hosid,id);	
+		System.out.println(result);
+		if(result == 1)
+			return "ok";
+		else
+			return "false";
 	}
 }
