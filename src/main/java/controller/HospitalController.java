@@ -21,15 +21,16 @@ public class HospitalController {
 	@Autowired
 	private HospitalService hospitalService;
 	@Autowired
-	private ReservationService ReservationService;
+	private ReservationService reservationService;
 	@RequestMapping(value="/cancel.do")
 	@ResponseBody//일단 이거 넣어야 string이나 json으로 전달되네
 	public String cancelReserve(ReservationCancelVO vo){
 		//삭제 로직을 넣어야한다.
 		int result;
 		System.out.println(vo.getMemberID()+"/"+vo.getReserveID());
-		result=ReservationService.deleteReservation(vo.getReserveID(),vo.getMemberID());	
+		result=reservationService.deleteReservation(vo.getReserveID(),vo.getMemberID());
 		System.out.println(result);
+		
 		if(result == 1)
 			return "ok";
 		else

@@ -21,6 +21,7 @@ public class ReservationManager {
 	private ReservationDAO reservationDAO;
 	
 	private ReservationManager() {
+
 		super();
 		reservationDAO = new ReservationDAO();
 		reservations = reservationDAO.load();
@@ -204,6 +205,16 @@ public class ReservationManager {
 		return 1;
 	}
 	
+	public byte addReservation(String hospitalID,String customerID,String reservationType,String reservationDate) {
+		//마지막 id 가져와야한다.
+		String id=reservations.get(reservations.size()-1).getId();
+		int number=Integer.parseInt(id.substring(1))+1;
+		String newID=String.format("r%03d",number);
+		//실행된 예약이 아니니 당연히 디폴트로 0 설정
+		Reservation item=new Reservation(newID,hospitalID,customerID,reservationType,reservationDate,(byte)0);
+		reservations.add(item);
+		return 1;
+	}
 	public byte addReservation(String hospitalID,String memberID,Reservation reservation) {
 		//�쑀�슚�꽦 寃�利앺븯�뒗嫄� - 蹂묒썝id(蹂묒썝�� 鍮꾪쉶�썝�룄 媛��뒫�빐�꽌 議곌굔寃��궗 x),memberID �솗�씤
 		//�븘�씠�뵒媛� 遺��젙�븷寃쎌슦 �삁�빟�씠 遺덇��뒫�븯�떎.

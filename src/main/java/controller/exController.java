@@ -22,7 +22,6 @@ import service.MemberService;
 
 @Controller
 public class exController {
-
 	@Autowired
 	private MemberService memberService;
 	@Autowired
