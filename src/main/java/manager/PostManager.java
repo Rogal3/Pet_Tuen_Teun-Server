@@ -130,7 +130,23 @@ public class PostManager {
 		return 0;
 	}
 	
-	public byte addBoard(Post post) {
+	public String getNextId() {
+		if (posts.isEmpty()) {
+			return "p000001";
+		} else {
+			String lastId = posts.get(posts.size() - 1).getId();
+			int i_id = Integer.parseInt(lastId.substring(1)) + 1;
+			return Integer.toString(i_id);
+		}
+	}
+	
+	public byte addPost(String type, String title, String writer, String content, String writeTime) {
+		Post post = new Post(getNextId(), type, title, writer, content, writeTime);
+		posts.add(post);
+		return 1;
+	}
+	
+	public byte addPost(Post post) {
 		posts.add(post);
 		return 1;
 	}
