@@ -23,8 +23,7 @@ public class DoctorManager {
 	public DoctorManager() {
 		super();
 		doctorDAO = new DoctorDAO();
-		// TODO
-		//this.doctors=doctorDAO.load();
+		this.doctors=doctorDAO.load();
 	}
 	public DoctorManager(HashMap<String, HashMap<String, Doctor>> doctors) {
 		super();
