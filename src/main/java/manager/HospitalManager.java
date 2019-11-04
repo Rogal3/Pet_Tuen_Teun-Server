@@ -37,6 +37,7 @@ public class HospitalManager {
 		this.hospitals = hospital;
 	}
 	public Hospital searchHospital(String name) {
+		System.out.println(name);
 		return this.hospitals.get(name);
 	}
 	public ArrayList<Hospital> searchHospitalByTime(String curTime){
