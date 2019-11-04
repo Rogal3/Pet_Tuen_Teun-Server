@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ReservationDTO implements Serializable {
 	private String id;
-	private String hospitalID;
+	private String hospitalMemberID;
 	private String customerID;
 	private String reservationType;
 	private String reservationDate;
@@ -14,11 +14,11 @@ public class ReservationDTO implements Serializable {
 		super();
 	}
 
-	public ReservationDTO(String id, String hospitalID, String customerID, String reservationType,
+	public ReservationDTO(String id, String hospitalMemberID, String customerID, String reservationType,
 			String reservationDate, int isExecuted) {
 		super();
 		this.id = id;
-		this.hospitalID = hospitalID;
+		this.hospitalMemberID = hospitalMemberID;
 		this.customerID = customerID;
 		this.reservationType = reservationType;
 		this.reservationDate = reservationDate;
@@ -33,12 +33,12 @@ public class ReservationDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getHospitalID() {
-		return hospitalID;
+	public String gethospitalMemberID() {
+		return hospitalMemberID;
 	}
 
-	public void setHospitalID(String hospitalID) {
-		this.hospitalID = hospitalID;
+	public void sethospitalMemberID(String hospitalMemberID) {
+		this.hospitalMemberID = hospitalMemberID;
 	}
 
 	public String getCustomerID() {
@@ -75,7 +75,7 @@ public class ReservationDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ReservationDTO [id=" + id + ", hospitalID=" + hospitalID + ", customerID=" + customerID
+		return "ReservationDTO [id=" + id + ", hospitalMemberID=" + hospitalMemberID + ", customerID=" + customerID
 				+ ", reservationType=" + reservationType + ", reservationDate=" + reservationDate + ", isExecuted="
 				+ isExecuted + "]";
 	}
