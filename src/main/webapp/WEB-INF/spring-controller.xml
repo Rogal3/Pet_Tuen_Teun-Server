@@ -4,6 +4,25 @@
 
 <!-- 컨트롤러 나중에 -->
 	
-	<bean class="view.exController"></bean>	
+	<bean class="controller.exController"></bean>	
+	<bean class="controller.MemberController"></bean>
+	<bean class="controller.PetController"></bean>
+	<bean class="controller.HospitalController"></bean>
+	<bean class="controller.PostController"></bean>
+	<bean class="controller.Test"></bean>
 	
+	<!-- 서비스 등록 일단 지금 여따가 해둠 -->	
+	<bean id="memberService" class="service.MemberService"></bean>
+	<bean id="hospitalService" class="service.HospitalService"></bean>
+	<bean id="reservationService" class="service.ReservationService"></bean>
+	
+	<bean id="memberManager" class="manager.MemberManager"></bean>
+	<bean id="hospitalManager" class="manager.HospitalManager"></bean>
+	<bean id="RatingManager" class="manager.RatingManager"></bean>
+	<bean id="DoctorManager" class="manager.DoctorManager"></bean>
+	<bean id="ReservationManager" class="manager.ReservationManager"></bean>
+	<bean id="AnimalManager" class="manager.AnimalManager"></bean>
+	<bean id="commentManager" class="manager.CommentManager"></bean>
+	<bean id="postManager" class="manager.PostManager"></bean>
+
 </beans>
