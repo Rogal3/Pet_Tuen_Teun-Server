@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 INSERT INTO `reservation` (`id`, `hospitalMemberID`, `customerID`, `reservationType`, `reservationTime`, `isExecuted`) VALUES
 	('r001', 'komo6521', 'jr29jr', '우리 은호가 어디 아픈가봐요.', '1970-01-01 00:00:00', 0),
-	('r002', 'komo6521', 'sungyil', '아픔. 걍 존내아픔.', '1970-01-01 00:00:00', 0);
+	('r002', 'komo6521', 'sungyil', '아픔. 걍 마이 아픔.', '1970-01-01 00:00:00', 0);
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
